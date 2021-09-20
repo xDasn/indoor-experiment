@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<script src="scripts/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	
+	var random_code 
+	
+	function generateId () {
+		random_code = (Math.round(Math.random()*100000000));
+		document.getElementById("identifier").innerHTML="User ID: " + random_code;
+	}
+	
+	function openNextSlide () {
+		window.open("000_questionnaire.html", "_self");
+	}
+	</script>
+</head>
+	<body onload="generateId();" style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
+		<h3>3DmoveR 2.2</h3>
+		<br/>
+		<i><p id="identifier"> </p></i>
+		<p>Welcome to the interactive 3D visualization usability test!</p>
+		<p>Your device must support <b>WebGL</b>. You can test WebGL support <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.</p>
+		<p>If possible, work in full screen mode. For example, use the <b>F11</b> key to turn it on.<p>
+		<input type="button" value="Enter the test" onclick="openNextSlide();" style="height: 30px; width: 180px; font: normal normal 12px Arial;"/>
+		<br/>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<script src="scripts/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	var userId = location.search.substring(8);
+		
+	function openNextSlide () {
+		window.open("tasks/001_task.html?userId=" + userId, "_self");
+	}
+	
+	</script>
+</head>
+	<body style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
+		<p> </p>
+		<p><b>Instructions</b> ...</p>
+		<p>...</p>
+		<div style="border-width: 1px; border-style: solid; border-color: #666666; padding-left: 10px; padding-top: 5px;">
+		<p>You can use following functions to control 3D scene:</p>
+		<p><b>Orbiting</b> is done by moving the mouse while pressing the <b>left</b> mouse button.</p>
+		<p><img src="img/left.png"></p>		
+		<p><b>Field of view</b> changes by scrolling the mouse <b>wheel</b>.</p>
+		<p><!--<img src="img/middle.png">&nbsp; or &nbsp; &nbsp; &nbsp;--><img src="img/scroll.png"></p>
+		<!--<p><b>Pan</b> is done by moving the mouse while pressing the <b>right</b> button or the mouse wheel.</p>
+		<p><img src="img/right.png"></p>-->
+		</div>
+		<br/>
+		<!--<img src="img/task.png"><br/>-->
+		<p>When you think you have found and marked the right coridor, press the "<b>Save</b>" button. </p>
+		<br/>
+		<input type="button" value="Continue" onclick="openNextSlide();" style="height: 30px; width: 180px; font: normal normal 12px Arial;"/>
+		<br/>
+	</body>
+</html>
+
+
+
+
+

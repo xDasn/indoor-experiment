@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<script src="scripts/jquery-1.11.2.js"></script>
+</head>
+	<body style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;" onload="loadUserCsv()">
+		<script type="text/javascript">
+		var userId = location.search.substring(8);
+
+		function loadUserCsv() {
+			document.getElementById("participantId").innerHTML = '' + userId + ' ';
+			document.getElementById("taskLink").setAttribute('href', 'data/task_D_' + userId + '.csv');
+			document.getElementById("moveLink").setAttribute('href', 'data/move_D_' + userId + '.csv');
+		}
+		</script>
+		<p><b>Thank you for completing the test! </b></p>
+		<br/>
+		<br/>
+		<div style="border-width: 1px; border-style: solid; border-color: #666666; padding: 10px">
+		<p>You can download CSV files (containing time, answers and orientations of virtual camera) for task you solved:</p>	
+		<p>Your participan ID was: <b id="participantId"></b></p>
+		<ul>
+			<li><a id="taskLink" href="" target="_blank">CSV file user actions (clicks)</a></li>
+			<li><a id="moveLink" href="" target="_blank">CSV file camera rotation</a></li>
+		</ul>		
+		</div>
+		<br/>
+		<p>Or you can turn off your web browser...</p>
+		<br/>
+	
+	</body>
+</html>

@@ -1,0 +1,244 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+</head>
+	<body style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
+	<script src="scripts/jquery-1.11.2.js"></script>
+	<script src="scripts/save_to_existing_csv.js"></script>
+	<script src="scripts/detect_keys.js"></script>
+	<script type="text/javascript">
+	var form_data  = [];
+	var d  = [];
+	var taskOr = location.search.substring(8, 9);
+	var testVa = location.search.substring(17, 23);
+	var userId = location.search.substring(31);
+	
+	var file_name1 = 'post_eval_02.csv';
+	var file_name2 = 'task_all_' + userId + '.csv';
+	
+	function testData (){
+		var intform1 = document.getElementsByName("stress");
+		var check1 = 0;
+		for(i=0;i<intform1.length;i++){
+			if(intform1[i].checked){
+				check1++;
+				break;
+			}
+		}
+		var intform2 = document.getElementsByName("decision_width");
+		var check2 = 0;
+		for(i=0;i<intform2.length;i++){
+			if(intform2[i].checked){
+				check2++;
+				break;
+			}
+		}
+		
+		var intform3 = document.getElementsByName("decision_length");
+		var check3 = 0;
+		for(i=0;i<intform3.length;i++){
+			if(intform3[i].checked){
+				check3++;
+				break;
+			}
+		}
+
+		var intform4 = document.getElementsByName("decision_stairs");
+		var check4 = 0;
+		for(i=0;i<intform4.length;i++){
+			if(intform4[i].checked){
+				check4++;
+				break;
+			}
+		}
+
+		var intform5 = document.getElementsByName("decision_random");
+		var check5 = 0;
+		for(i=0;i<intform5.length;i++){
+			if(intform5[i].checked){
+				check5++;
+				break;
+			}
+		}
+
+		if (check1 && check2 && check3 && check4 && check5) {
+			document.getElementById("fillAll").innerHTML = " ";
+			readData();
+		}
+		else {
+			document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with red asterisk).";
+		}
+	}
+	
+	function readData() {
+	
+	var datum = new Date();
+	var y = datum.getFullYear();
+	var o = datum.getMonth();
+	var d = datum.getDay();
+	var h = datum.getHours(); 
+	var m = datum.getMinutes();
+	var s = datum.getSeconds();
+	
+	form_data.push(y+"-"+o+"-"+d+"-"+h+":"+m+":"+s);
+	
+	form_data.push(userId);
+	form_data.push(testVa);
+	
+	form_data.push(taskOr);
+	form_data.push(history.length);
+
+	form_data.push($('input:radio[name=stress]:checked').val());
+	form_data.push($('input:radio[name=decision_width]:checked').val());
+	form_data.push($('input:radio[name=decision_length]:checked').val());
+	form_data.push($('input:radio[name=decision_stairs]:checked').val());
+	form_data.push($('input:radio[name=decision_random]:checked').val());
+
+	form_data.push(document.getElementById("decision_text").value);
+	form_data.push(document.getElementById("comments_text").value);
+	
+	var w = window.innerWidth
+	|| document.documentElement.clientWidth
+	|| document.body.clientWidth;
+
+	var h = window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	
+	form_data.push(w);
+	form_data.push(h);
+
+	form_data.push(screen.width);
+	form_data.push(screen.height);
+	form_data.push(screen.colorDepth);
+	
+	form_data.push(navigator.platform);
+	form_data.push(navigator.appCodeName+" "+navigator.appVersion);
+	form_data.push(navigator.language);
+	
+	var browserInfo = navigator.userAgent;
+	browserInfo = browserInfo.replace(/;/g, '');
+	browserInfo = browserInfo.replace(/,/g, '');
+	form_data.push(browserInfo);
+	
+	form_data = form_data.toString();
+	form_data = form_data.replace(/,/g, ';');
+
+	saveDataToExistingFile(file_name1, form_data);
+	saveDataToExistingFile(file_name2, d);
+	
+	openNextSlide();
+	
+	}
+	
+	function openNextSlide() {
+		setTimeout(function() {
+			window.open("011_end.html", "_self");
+		}, 750);	
+	}
+</script>
+		<br/>
+			<div style="border-width: 1px; border-style: solid; border-color: #666666; padding: 10px">
+			<b>Final evaluation of conducted test.</b>
+			<br/><br/>
+			<i>When choosing the corridor, I felt under time pressure: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
+			<table>
+			<tr>				
+				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="1"></td>
+				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="2"></td>
+				<td style="width: 100px; text-align: center;"><input type="radio" name="stress" value="3"></td>
+				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="4"></td>
+				<td style="width: 100px; text-align: center;"><input type="radio" name="stress" value="5"></td>				
+			</tr>
+			<tr>
+				<td style="width: 125px; text-align: center;">strongly agree</td>
+				<td style="width: 125px; text-align: center;">agree</td>
+				<td style="width: 125px; text-align: center;">neutral</td>
+				<td style="width: 125px; text-align: center;">disagree</td>
+				<td style="width: 125px; text-align: center;">strongly disagree</td>
+			</tr>
+			</table>				
+			<br/><br/>
+			<i>When choosing the corridor, I often decided according to the width of the corridors: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
+			<table>
+				<tr>				
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="1"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="2"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_width" value="3"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="4"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_width" value="5"></td>				
+				</tr>
+				<tr>
+					<td style="width: 125px; text-align: center;">strongly agree</td>
+					<td style="width: 125px; text-align: center;">agree</td>
+					<td style="width: 125px; text-align: center;">neutral</td>
+					<td style="width: 125px; text-align: center;">disagree</td>
+					<td style="width: 125px; text-align: center;">strongly disagree</td>
+				</tr>
+			</table>				
+			<br/><br/>
+			<i>When choosing the corridor, I often decided according to the length of the corridors: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
+			<table>
+				<tr>				
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="1"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="2"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_length" value="3"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="4"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_length" value="5"></td>				
+				</tr>
+				<tr>
+					<td style="width: 125px; text-align: center;">strongly agree</td>
+					<td style="width: 125px; text-align: center;">agree</td>
+					<td style="width: 125px; text-align: center;">neutral</td>
+					<td style="width: 125px; text-align: center;">disagree</td>
+					<td style="width: 125px; text-align: center;">strongly disagree</td>
+				</tr>
+			</table>			
+			<br/><br/>
+			<i>When choosing the corridor, I often decided according to the presence of the staircase: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
+			<table>
+				<tr>				
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="1"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="2"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_stairs" value="3"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="4"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_stairs" value="5"></td>				
+				</tr>
+				<tr>
+					<td style="width: 125px; text-align: center;">strongly agree</td>
+					<td style="width: 125px; text-align: center;">agree</td>
+					<td style="width: 125px; text-align: center;">neutral</td>
+					<td style="width: 125px; text-align: center;">disagree</td>
+					<td style="width: 125px; text-align: center;">strongly disagree</td>
+				</tr>
+			</table>			
+			<br/><br/>
+			<i>When choosing the corridor, I often decided randomly: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
+			<table>
+				<tr>				
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="1"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="2"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_random" value="3"></td>
+					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="4"></td>
+					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_random" value="5"></td>				
+				</tr>
+				<tr>
+					<td style="width: 125px; text-align: center;">strongly agree</td>
+					<td style="width: 125px; text-align: center;">agree</td>
+					<td style="width: 125px; text-align: center;">neutral</td>
+					<td style="width: 125px; text-align: center;">disagree</td>
+					<td style="width: 125px; text-align: center;">strongly disagree</td>
+				</tr>
+			</table>			
+			<br/><br/>
+			<p><i>Please write anything that comes to mind about what you decided when choosing the corridor. </i><br/><textarea rows="6" cols="48" id="decision_text" type="text" name="problems_text" value=" "></textarea></p>
+			<br/>
+			<p><i>If you want to comment on the test in any way, please write your note here: </i><br/><textarea rows="6" cols="48" id="comments_text" type="text" name="comments_text" value=" "></textarea></p>			
+			
+			</div><br/>
+			<input type="button" id="storeData" value="Save and Continue" style="height: 30px; width: 180px; font: normal normal 12px Arial;" onclick="testData();"/><span style="color: red;" id="fillAll"></span>
+		</form>	
+		<br/>
+	</body>
+</html>
