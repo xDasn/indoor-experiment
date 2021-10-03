@@ -2,8 +2,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" href="forms-styling.css">
 </head>
-	<body style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
+	<body>
 	<script src="scripts/jquery-1.11.2.js"></script>
 	<script src="scripts/save_to_existing_csv.js"></script>
 	<script src="scripts/detect_keys.js"></script>
@@ -67,7 +69,7 @@
 			readData();
 		}
 		else {
-			document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with red asterisk).";
+			document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with asterisk).";
 		}
 	}
 	
@@ -138,107 +140,138 @@
 		}, 750);	
 	}
 </script>
-		<br/>
-			<div style="border-width: 1px; border-style: solid; border-color: #666666; padding: 10px">
-			<b>Final evaluation of conducted test.</b>
-			<br/><br/>
-			<i>When choosing the corridor, I felt under time pressure: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
-			<table>
-			<tr>				
-				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="1"></td>
-				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="2"></td>
-				<td style="width: 100px; text-align: center;"><input type="radio" name="stress" value="3"></td>
-				<td style="width: 50px; text-align: center;"><input type="radio" name="stress" value="4"></td>
-				<td style="width: 100px; text-align: center;"><input type="radio" name="stress" value="5"></td>				
-			</tr>
-			<tr>
-				<td style="width: 125px; text-align: center;">strongly agree</td>
-				<td style="width: 125px; text-align: center;">agree</td>
-				<td style="width: 125px; text-align: center;">neutral</td>
-				<td style="width: 125px; text-align: center;">disagree</td>
-				<td style="width: 125px; text-align: center;">strongly disagree</td>
-			</tr>
-			</table>				
-			<br/><br/>
-			<i>When choosing the corridor, I often decided according to the width of the corridors: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
-			<table>
-				<tr>				
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="1"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="2"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_width" value="3"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_width" value="4"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_width" value="5"></td>				
-				</tr>
-				<tr>
-					<td style="width: 125px; text-align: center;">strongly agree</td>
-					<td style="width: 125px; text-align: center;">agree</td>
-					<td style="width: 125px; text-align: center;">neutral</td>
-					<td style="width: 125px; text-align: center;">disagree</td>
-					<td style="width: 125px; text-align: center;">strongly disagree</td>
-				</tr>
-			</table>				
-			<br/><br/>
-			<i>When choosing the corridor, I often decided according to the length of the corridors: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
-			<table>
-				<tr>				
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="1"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="2"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_length" value="3"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_length" value="4"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_length" value="5"></td>				
-				</tr>
-				<tr>
-					<td style="width: 125px; text-align: center;">strongly agree</td>
-					<td style="width: 125px; text-align: center;">agree</td>
-					<td style="width: 125px; text-align: center;">neutral</td>
-					<td style="width: 125px; text-align: center;">disagree</td>
-					<td style="width: 125px; text-align: center;">strongly disagree</td>
-				</tr>
-			</table>			
-			<br/><br/>
-			<i>When choosing the corridor, I often decided according to the presence of the staircase: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
-			<table>
-				<tr>				
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="1"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="2"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_stairs" value="3"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_stairs" value="4"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_stairs" value="5"></td>				
-				</tr>
-				<tr>
-					<td style="width: 125px; text-align: center;">strongly agree</td>
-					<td style="width: 125px; text-align: center;">agree</td>
-					<td style="width: 125px; text-align: center;">neutral</td>
-					<td style="width: 125px; text-align: center;">disagree</td>
-					<td style="width: 125px; text-align: center;">strongly disagree</td>
-				</tr>
-			</table>			
-			<br/><br/>
-			<i>When choosing the corridor, I often decided randomly: <span style="color: #ff0000; font-weight: bold;">*</span></i><br/>
-			<table>
-				<tr>				
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="1"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="2"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_random" value="3"></td>
-					<td style="width: 50px; text-align: center;"><input type="radio" name="decision_random" value="4"></td>
-					<td style="width: 100px; text-align: center;"><input type="radio" name="decision_random" value="5"></td>				
-				</tr>
-				<tr>
-					<td style="width: 125px; text-align: center;">strongly agree</td>
-					<td style="width: 125px; text-align: center;">agree</td>
-					<td style="width: 125px; text-align: center;">neutral</td>
-					<td style="width: 125px; text-align: center;">disagree</td>
-					<td style="width: 125px; text-align: center;">strongly disagree</td>
-				</tr>
-			</table>			
-			<br/><br/>
-			<p><i>Please write anything that comes to mind about what you decided when choosing the corridor. </i><br/><textarea rows="6" cols="48" id="decision_text" type="text" name="problems_text" value=" "></textarea></p>
-			<br/>
-			<p><i>If you want to comment on the test in any way, please write your note here: </i><br/><textarea rows="6" cols="48" id="comments_text" type="text" name="comments_text" value=" "></textarea></p>			
-			
-			</div><br/>
-			<input type="button" id="storeData" value="Save and Continue" style="height: 30px; width: 180px; font: normal normal 12px Arial;" onclick="testData();"/><span style="color: red;" id="fillAll"></span>
+<div class="container col-md-6 col-md-offset-3">
+	<form class="form-horizontal">
+	  <h1 class="text-center">Final evaluation of conducted test</h1>
+	  <br>
+	  <fieldset class="form-group">
+			<legend class="col-form-label">When choosing the corridor, I felt under time pressure *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="stress1" name="stress" class="form-check-input" value="1">
+				<label class="form-check-label" for="stress1">strongly agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="stress2" name="stress" class="form-check-input"  value="2">
+				<label class="form-check-label" for="stress2">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="stress3" name="stress" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="stress3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="stress4" name="stress" class="form-check-input" value="4">
+				<label class="form-check-label" for="stress4">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="stress5" name="stress" class="form-check-input" value="5">
+				<label class="form-check-label" for="stress5">strongly disagree</label>
+			</div>
+	  </fieldset>
+	  <fieldset class="form-group">
+			<legend class="col-form-label">When choosing the corridor, I often decided according to the width of the corridors *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_width1" name="decision_width" class="form-check-input" value="1">
+				<label class="form-check-label" for="decision_width1">strongly agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_width2" name="decision_width" class="form-check-input"  value="2">
+				<label class="form-check-label" for="decision_width2">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_width3" name="decision_width" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="decision_width3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_width4" name="decision_width" class="form-check-input" value="4">
+				<label class="form-check-label" for="decision_width4">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_width5" name="decision_width" class="form-check-input" value="5">
+				<label class="form-check-label" for="decision_width5">strongly disagree</label>
+			</div>
+  		</fieldset>
+		<fieldset class="form-group">
+			<legend class="col-form-label">When choosing the corridor, I often decided according to the length of the corridors *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_length1" name="decision_length" class="form-check-input" value="1">
+				<label class="form-check-label" for="decision_length1">strongly agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_length2" name="decision_length" class="form-check-input"  value="2">
+				<label class="form-check-label" for="decision_length2">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_length3" name="decision_length" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="decision_length3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_length4" name="decision_length" class="form-check-input" value="4">
+				<label class="form-check-label" for="decision_length4">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_length5" name="decision_length" class="form-check-input" value="5">
+				<label class="form-check-label" for="decision_length5">strongly disagree</label>
+			</div>
+  		</fieldset>
+		<fieldset class="form-group">
+			<legend class="col-form-label">When choosing the corridor, I often decided according to the presence of the staircase *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_stairs1" name="decision_stairs" class="form-check-input" value="1">
+				<label class="form-check-label" for="decision_stairs1">strongly agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_stairs2" name="decision_stairs" class="form-check-input"  value="2">
+				<label class="form-check-label" for="decision_stairs2">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_stairs3" name="decision_stairs" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="decision_stairs3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_stairs4" name="decision_stairs" class="form-check-input" value="4">
+				<label class="form-check-label" for="decision_stairs4">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_stairs5" name="decision_stairs" class="form-check-input" value="5">
+				<label class="form-check-label" for="decision_stairs5">strongly disagree</label>
+			</div>
+  		</fieldset>
+		  <fieldset class="form-group">
+			<legend class="col-form-label">When choosing the corridor, I often decided randomly *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_random1" name="decision_random" class="form-check-input" value="1">
+				<label class="form-check-label" for="decision_random1">strongly agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_random2" name="decision_random" class="form-check-input"  value="2">
+				<label class="form-check-label" for="decision_random2">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_random3" name="decision_random" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="decision_random3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_random4" name="decision_random" class="form-check-input" value="4">
+				<label class="form-check-label" for="decision_random4">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="decision_random5" name="decision_random" class="form-check-input" value="5">
+				<label class="form-check-label" for="decision_random5">strongly disagree</label>
+			</div>
+  		</fieldset>
+		<br>
+		<div class="form-group">
+			<label class="col-form-label" for="decision_text">Decision comments</label>
+			<textarea class="form-control" id="decision_text" rows="6" placeholder="Please write anything that comes to mind about what you decided when choosing the corridor."></textarea>
+		</div>
+		<br>
+		<div class="form-group">
+			<label class="col-form-label" for="comments_text">Test comments</label>
+			<textarea class="form-control" id="comments_text" rows="6" placeholder="If you want to comment on the test in any way, please write your note here."></textarea>
+		</div>
+		<br>
+		<div class="text-center"><button type="button" class="btn btn-dark" id="storeData" onclick="testData();">Save and Continue</button><br><span style="color: red;" id="fillAll"></span></div>
 		</form>	
-		<br/>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 	</body>
 </html>

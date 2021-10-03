@@ -4,7 +4,6 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
 	<script src="scripts/jquery-1.11.2.js"></script>
 	<script type="text/javascript">
-	
 	var random_code 
 	
 	function generateId () {
@@ -16,15 +15,17 @@
 		window.open("000_questionnaire.html", "_self");
 	}
 	</script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
-	<body onload="generateId();" style="font-family: Arial, serif; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
-		<h3>3DmoveR 2.2</h3>
-		<br/>
-		<i><p id="identifier"> </p></i>
-		<p>Welcome to the interactive 3D visualization usability test!</p>
-		<p>Your device must support <b>WebGL</b>. You can test WebGL support <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.</p>
-		<p>If possible, work in full screen mode. For example, use the <b>F11</b> key to turn it on.<p>
-		<input type="button" value="Enter the test" onclick="openNextSlide();" style="height: 30px; width: 180px; font: normal normal 12px Arial;"/>
-		<br/>
+	<body onload="generateId();">
+		<div class="container col-md-4 col-md-offset-4">
+			<h1 class="text-center">3DmoveR 2.2</h1>
+			<i><p id="identifier"> </p></i>
+			<p>Welcome to the interactive 3D visualization usability test!</p>
+			<p>Your device must support <b>WebGL</b>. You can test WebGL support <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.</p>
+			<p>If possible, work in full screen mode. For example, use the <b>F11</b> key to turn it on.</p>
+			<div class="text-center"><button type="button" class="btn btn-dark" onclick="openNextSlide();">Enter the test</button></div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 	</body>
 </html>
