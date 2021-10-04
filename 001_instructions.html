@@ -4,10 +4,17 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
 	<script src="scripts/jquery-1.11.2.js"></script>
 	<script type="text/javascript">
-	var userId = location.search.substring(8);
+
+	function getParameterByName(name) {
+		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	}
+    var taskOr = getParameterByName('taskOr');
+	var taskCount = 1;
+	var userId = getParameterByName('userId');
 
 	function openNextSlide () {
-		window.open("task.php?userId=" + userId, "_self");
+		window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId + "", "_self")
 	}
 	
 	</script>

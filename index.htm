@@ -6,18 +6,13 @@
 	<script type="text/javascript">
 	var random_code 
 	
-	function generateId () {
-		random_code = (Math.round(Math.random()*100000000));
-		document.getElementById("identifier").innerHTML="User ID: " + random_code;
-	}
-	
 	function openNextSlide () {
 		window.open("000_questionnaire.html", "_self");
 	}
 	</script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
-	<body onload="generateId();">
+	<body>
 		<div class="container col-md-4 col-md-offset-4">
 			<h1 class="text-center">3DmoveR 2.2</h1>
 			<i><p id="identifier"> </p></i>

@@ -12,9 +12,13 @@
 	<script type="text/javascript">
 	var form_data  = [];
 	var d  = [];
-	var taskOr = location.search.substring(8, 9);
-	var testVa = location.search.substring(17, 23);
-	var userId = location.search.substring(31);
+	function getParameterByName(name) {
+		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	}
+    var taskOr = getParameterByName('taskOr');
+	var taskCount = getParameterByName('taskCount');
+	var userId = getParameterByName('userId');
 	
 	var file_name1 = 'post_eval_02.csv';
 	var file_name2 = 'task_all_' + userId + '.csv';

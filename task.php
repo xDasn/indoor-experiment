@@ -65,10 +65,13 @@ if (substr($scene,0,3) == "L-W") {
 ?>
 
 <script>
-	var userId = location.search.substring(8);
-
-	var taskL = "D";
-	var taskOr = 1; 
+	function getParameterByName(name) {
+		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	}
+    var taskOr = getParameterByName('taskOr');
+	var taskCount = getParameterByName('taskCount');
+	var userId = getParameterByName('userId');
 	
 	var file_name1 = 'move_D_' + userId + '.csv';
 	//var file_name2 = 'all_task_D.csv';
@@ -129,7 +132,6 @@ if (substr($scene,0,3) == "L-W") {
 
 	var myVar = setInterval(counter, 10);
 	var timerValue = 3000;
-    var taskCount = 1;
 	function counter (){
 		timerValue = timerValue - 10;
 		var sceneEl = document.querySelector('a-scene');
@@ -143,14 +145,13 @@ if (substr($scene,0,3) == "L-W") {
 		saveCSV();
  
 		setTimeout(function() {
-            /*if (taskCount < 36) {
-                window.open("task.php?userId=" + userId, "_self");
-                taskCount = taskCount + 1;
+            if (taskCount < 37) {
+				taskCount = Number(taskCount) + 1;
+                window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
             }
             else {
-                window.open("../010_questionnaire.html?userId=" + userId, "_self");
-            }*/
-            window.open("task.php?userId=" + userId, "_self");
+                window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+            }
 		}, 250);
 		
 		}
@@ -174,7 +175,7 @@ if (substr($scene,0,3) == "L-W") {
 				
 				setTimeout(function() {
 					//window.open("./010_questionnaire.html?userId=" + userId, "_self");
-                    window.open("task.php?userId=" + userId, "_self");
+                    window.open("task.php?taskOr=" + taskOr + "&testCount=" + testCount + "&userId=" + userId + "", "_self");
 				}, 250);
 			}
           });
