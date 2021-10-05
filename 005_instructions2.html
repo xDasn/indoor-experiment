@@ -10,11 +10,11 @@
 		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 	}
     var taskOr = getParameterByName('taskOr');
-	var taskCount = 0;
+	var taskCount = 1;
 	var userId = getParameterByName('userId');
 
 	function openNextSlide () {
-		window.open("002_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId + "", "_self")
+		window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId + "", "_self")
 	}
 	
 	</script>
@@ -23,16 +23,9 @@
 	<body>
 		<div class="container col-md-4 col-md-offset-4">
 		<br>
-		<h1>Instructions</h1>
+		<h1>End of training session</h1>
 		<br>
-		<p>The whole test consits of 36 scenes of artificial indoor environment, which are presented on your screen in the form of interactive panoramatic picture.</p>
-		<p>Your task is always to <b>choose one of the corridors</b> that seems more suitable for you to escape in the event of an <b>evacuation</b>. But be careful,
-			you only have <b>3 seconds</b> to make your decision. Corridor can be selected by pressing the <b>left</b> mouse button. After selecting the corridor another scene will be loaded automatically.</p>
-		<p>By <b>moving</b> the mouse while pressing the <b>left</b> mouse button you can rotate the scene, which equals to the rotation of head in the real life. 
-		</p>
-		<p class="text-center"><img src="img/left.png"></p>	
-		<br/>
-		<p>Now three training tasks will followm on which you will be able to try out the interaction with the scenes and the selection of the corridors.</p>
+		<p>This is the end of the training session. When you feal ready, you can proceed to the actual test.</p>
 		<br/>
 		<div class="text-center"><button type="button" class="btn btn-dark" onclick="openNextSlide();">Continue</button></div>
 		</div>
