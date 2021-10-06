@@ -129,15 +129,15 @@
                 //getWorldQuaternion(...);
             }
         });
-          
+
         </script> 
 <a-scene>
     <a-entity id="rig" position="0 0 0">
-        <a-camera id="camera" look-controls rotation-reader>
+        <a-camera id="camera" look-controls rotation-reader>	
                 <a-entity id="counterText" geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: 3.00 s;"></a-entity>
         </a-camera>
     </a-entity>
-    <a-sky clickhandler="txt:backgr" src="scenes/L-EE0_R-EE0.png" rotation="0 -90 0"></a-sky>
+    <a-sky clickhandler="txt:backgr" src="scenes/01_L-EE0_R-EE0.png" rotation="0 -90 0"></a-sky>
     <a-plane clickhandler="txt:corridor_left" position="-6 1 -11" rotation="0 40 0" width="12" height="12" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
     <a-plane clickhandler="txt:corridor_right" position="6 1 -11" rotation="0 320 0" width="12" height="12" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
     <a-entity cursor="rayOrigin:mouse"></a-entity>		  

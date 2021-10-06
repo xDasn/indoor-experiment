@@ -19,49 +19,6 @@ function debug_to_console($data) {
 
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 };
-
-function random_scene($dir = './scenes')
-{
-    $files = glob($dir . '/*.*');
-    $file = array_rand($files);
-    return $files[$file];
-};
-
-$scenepath = random_scene();
-$scene = substr($scenepath,-15);
-$AOIleftposition = "-6 1 -11";
-$AOIrightposition = "6 1 -11";
-$AOIleftwidth = "12";
-$AOIrightwidth = "12";
-$AOIleftheight = "12";
-$AOIrightheight = "12";
-$AOIopacity = "0.25";
-
-if (substr($scene,0,3) == "L-W") {
-    debug_to_console (substr($scene,0,3) == "L-W");
-    $AOIleftposition = "-4 0 -11";
-    $AOIrightposition = "8 0.5 -11";
-    $AOIleftwidth = "15";
-    $AOIrightwidth = "9";
-    $AOIleftheight = "14";
-    $AOIrightheight = "12";
-} elseif (substr($scene,0,3) == "L-N") {
-    debug_to_console (substr($scene,0,3) == "L-N");
-    $AOIleftposition = "-8 0.5 -11";
-    $AOIrightposition = "4 0 -11";
-    $AOIleftwidth = "9";
-    $AOIrightwidth = "15";
-    $AOIleftheight = "12";
-    $AOIrightheight = "14";
-} else {
-    debug_to_console ("equal");
-    $AOIleftposition = "-6 1 -11";
-    $AOIrightposition = "6 1 -11";
-    $AOIleftwidth = "12";
-    $AOIrightwidth = "12";
-    $AOIleftheight = "12";
-    $AOIrightheight = "12";
-};
 ?>
 
 <script>
@@ -73,10 +30,8 @@ if (substr($scene,0,3) == "L-W") {
 	var taskCount = getParameterByName('taskCount');
 	var userId = getParameterByName('userId');
 	
-	var file_name1 = 'move_D_' + userId + '.csv';
-	//var file_name2 = 'all_task_D.csv';
-	var file_name3 = 'task_D_' + userId + '.csv';
-	//var file_name4 = 'task_all_' + userId + '.csv';
+	var responses_file = userId + 'corridors.csv';
+	var interaction_file = userId + 'interaction.csv';
 
 	//document.addEventListener("keydown", detectKey);
 	
@@ -94,16 +49,14 @@ if (substr($scene,0,3) == "L-W") {
 		}, 10);
 
 	function saveCSV() {
-			//var worldCamera = app.scene.toMapCoordinates(app.camera.position.x, app.camera.position.y, app.camera.position.z);
-			//var worldTarget = app.scene.toMapCoordinates(app.controls.target.x, app.controls.target.y, app.controls.target.z);
-			a.push([time, "end"]);
+			a.push([$scene, time, "end"]);
 			//b.push([userId, taskL, parseInt(taskOr), history.length, time, "end", numClick]);
-			c.push([time, "end", numClick]);
+			c.push([$scene, time, "end", numClick]);
 			//d.push([userId, taskL, parseInt(taskOr), history.length, time, "end", numClick]);
 	
-			saveDataToNewFile(file_name1, arrayToCSV(a));
+			saveDataToNewFile(interaction_file, arrayToCSV(a));
 			//saveDataToExistingFile(file_name2, arrayToCSV(b));
-			saveDataToNewFile(file_name3, arrayToCSV(c));	
+			saveDataToNewFile(responses_file, arrayToCSV(c));	
 			//saveDataToExistingFile(file_name4, arrayToCSV(d));
 	}
 	function arrayToCSV(input) {
@@ -130,32 +83,69 @@ if (substr($scene,0,3) == "L-W") {
 	//	}, 100);
 	//}
 
-	var myVar = setInterval(counter, 10);
-	var timerValue = 3000;
-	function counter (){
-		timerValue = timerValue - 10;
-		var sceneEl = document.querySelector('a-scene');
-		if (timerValue > 0 ) {
-		sceneEl.querySelector("#counterText").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '' + (timerValue/1000).toFixed(2) + ' s'}, true);
+	$.ajax({
+		type: 'post',
+		cache: false,
+		url: 'scripts/return_scene.php',
+		dataType: 'json',
+		data: {
+			taskOr: taskOr,
+			taskCount: taskCount
+		},
+		success: function(output) {
+			//alert(output);
+			setTimeout(function() {
+				var scene = output[0];
+				var scenepath = output[1];
+				var AOIleftposition = output[2];
+				var AOIrightposition = output[3];
+				var AOIleftwidth = output[4];
+				var AOIrightwidth = output[5];
+				var AOIleftheight = output[6];
+				var AOIrightheight = output[7];
+				var AOIopacity = output[8];
+				$("#a-frame-scene").attr("src",scenepath);
+				$("#corridor-left").attr("position",AOIleftposition);
+				$("#corridor-right").attr("position",AOIrightposition);
+				$("#corridor-left").attr("width",AOIleftwidth);
+				$("#corridor-right").attr("width",AOIrightwidth);
+				$("#corridor-left").attr("height",AOIleftheight);
+				$("#corridor-right").attr("height",AOIrightheight);
+				$("#corridor-left").attr("opacity",AOIopacity);
+				$("#corridor-right").attr("opacity",AOIopacity);
+
+				var myVar = setInterval(counter, 10);
+				var timerValue = 5000;
+				var result;
+				function counter () {
+					timerValue = timerValue - 10;
+					var sceneEl = document.querySelector('a-scene');
+					if (timerValue > 0 ) {
+						sceneEl.querySelector("#counterText").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '' + (timerValue/1000).toFixed(2) + ' s'}, true);
+					}
+					else {
+						sceneEl.querySelector("#counterText").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s'}, true);
+						clearInterval(myVar);
+					
+						setTimeout(function() {
+							if (taskCount < 36) {
+								taskCount = Number(taskCount) + 1;
+								{
+								};
+								window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+							}
+							else {
+								window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+							}
+						}, 250);
+						
+						saveCSV();
+
+					}
+				}
+			}, 250);
 		}
-		else  {
-		sceneEl.querySelector("#counterText").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s'}, true);
-		clearInterval(myVar);
-		
-		saveCSV();
- 
-		setTimeout(function() {
-            if (taskCount < 37) {
-				taskCount = Number(taskCount) + 1;
-                window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-            }
-            else {
-                window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-            }
-		}, 250);
-		
-		}
-	}
+	});
 
 	AFRAME.registerComponent('clickhandler', {
         schema: {
@@ -191,17 +181,17 @@ if (substr($scene,0,3) == "L-W") {
 	});
 	  
 	</script>
-    <a-scene>
-    <a-entity id='rig' position='0 0 0'>
-        <a-camera id='camera' look-controls rotation-reader>	
-        <a-entity id='counterText' geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 5.00 s;'></a-entity>
-        </a-camera>
-    </a-entity>
-    <a-sky clickhandler='txt:backgr' src="<?php echo $scenepath; ?>" rotation='0 -90 0'></a-sky>
-    <a-plane clickhandler='txt:corridor_left' position="<?php echo $AOIleftposition; ?>" rotation='0 40 0' width="<?php echo $AOIleftwidth; ?>" height="<?php echo $AOIleftheight; ?>" color='#0000ff' transparent='true' opacity="<?php echo $AOIopacity; ?>"></a-plane>
-    <a-plane clickhandler='txt:corridor_right' position="<?php echo $AOIrightposition; ?>" rotation='0 330 0' width="<?php echo $AOIrightwidth; ?>" height="<?php echo $AOIrightheight; ?>" color='#ff0000' transparent='true' opacity="<?php echo $AOIopacity; ?>"></a-plane>
-    <a-entity cursor='rayOrigin:mouse'></a-entity>		  
-    </a-scene>
+	<a-scene>
+		<a-entity id='rig' position='0 0 0'>
+			<a-camera id='camera' look-controls rotation-reader>	
+			<a-entity id='counterText' geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 5.00 s;'></a-entity>
+			</a-camera>
+		</a-entity>
+		<a-sky clickhandler='txt:backgr' id="a-frame-scene" src="" rotation='0 -90 0'></a-sky>
+		<a-plane clickhandler='txt:corridor_left' id="corridor-left" position="" rotation='0 40 0' width="" height="" color='#0000ff' transparent='true' opacity=""></a-plane>
+		<a-plane clickhandler='txt:corridor_right' id="corridor-right" position="" rotation='0 330 0' width="" height="" color='#ff0000' transparent='true' opacity=""></a-plane>
+		<a-entity cursor='rayOrigin:mouse'></a-entity>		  
+	</a-scene>
  </body>
 </html>
 

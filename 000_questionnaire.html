@@ -124,8 +124,11 @@
 	};
 
 </script>
-<div class="container col-md-4 col-md-offset-4">
-  <form class="form-horizontal">
+<div clas="container">
+	<div class="row g-0" style="height: 100%;">
+	<div class="col-md-3" style="background-color: #1E64C8;"></div>
+	<div class="col-md-1"></div>
+  <form class="form-horizontal col-md-4 col-md-offset-4 justify-content-center d-flex flex-column">
 	<br>
 	<h1>Please fill in your basic personal characteristics</h1>
 	<br>
@@ -206,9 +209,12 @@
 		<textarea class="form-control" id="eye_defect" rows="5" placeholder="Please indicate if you have any eye defects"></textarea>
 	</div>
 	<br> 
-	<div class="text-center"><button type="button" class="btn btn-dark" id="storeData" onclick="testData();">Save and continue</button><br><span style="color: red;" id="fillAll"></span></div>
+	<div class="text-center"><button type="button" class="btn btn-dark btn-lg btn-lg" id="storeData" onclick="testData();">Save and continue</button><br><span style="color: red;" id="fillAll"></span></div>
   </form>
-  </div>
+  	<div class="col-md-1"></div>
+    <div class="col-md-3" style="background-color: #1E64C8;"></div>
+    </div>
+</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 		<script>	
 		(function () {
