@@ -7,21 +7,14 @@
 </head>
 	<body>
 	<script src="scripts/jquery-1.11.2.js"></script>
-	<script src="scripts/save_to_existing_csv.js"></script>
-	<script src="scripts/detect_keys.js"></script>
+	<script src="scripts/common.js"></script>
 	<script type="text/javascript">
 	var form_data  = [];
-	var d  = [];
-	function getParameterByName(name) {
-		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-	}
     var taskOr = getParameterByName('taskOr');
 	var taskCount = getParameterByName('taskCount');
 	var userId = getParameterByName('userId');
 	
-	var file_name1 = 'post_eval_02.csv';
-	var file_name2 = 'task_all_' + userId + '.csv';
+	var evalQuestionnaire = 'evaluation_questionnaire.csv';
 	
 	function testData (){
 		var intform1 = document.getElementsByName("stress");
@@ -131,17 +124,11 @@
 	form_data = form_data.toString();
 	form_data = form_data.replace(/,/g, ';');
 
-	saveDataToExistingFile(file_name1, form_data);
-	saveDataToExistingFile(file_name2, d);
+	saveDataToExistingFile(evalQuestionnaire, form_data);
 	
-	openNextSlide();
-	
-	}
-	
-	function openNextSlide() {
-		setTimeout(function() {
-			window.open("011_end.html", "_self");
-		}, 750);	
+	setTimeout(function() {
+		window.open("011_end.html", "_self");
+	}, 750);	
 	}
 </script>
 <div clas="container">

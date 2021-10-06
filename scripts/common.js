@@ -1,3 +1,23 @@
+var timerValue = 5000;
+
+function saveDataToNewFile(filename, filedata){
+    $.ajax({
+        type: 'post',
+        cache: false,
+        url: 'scripts/create_new_file.php', 
+        data: {filename: filename, filedata: filedata}
+    });
+};
+
+function saveDataToExistingFile(filename, filedata){
+    $.ajax({
+        type: 'post',
+        cache: false,
+        url: 'scripts/write_to_file.php', 
+        data: {filename: filename, filedata: filedata}
+    });
+};
+
 function detectKey(event) {	
     if(event.keyCode === 16){
 		d.push([userId, taskL, parseInt(taskOr), "", time, "shift"]);
@@ -55,4 +75,26 @@ function detectKey(event) {
 	else if(event.keyCode === 123){
 		d.push([userId, taskL, parseInt(taskOr), "", time, "f12"]);	
 	}		
-}
+};
+
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+};
+
+function arrayToCSV(input) {
+    var row, cell
+    var csv = "";
+    for (i = 0; i < input.length; ++i) {
+        row = input[i];
+        for (j = 0; j < row.length; ++j) {
+            cell = input[i][j] + ";";
+            csv = csv + cell;
+        }
+        csv = csv + "\n"; 
+    }
+    csv = csv.replace(/\./g, ',');
+    return csv;
+};
+
+
