@@ -138,7 +138,7 @@ function debug_to_console($data) {
 		tick: function () {
 			var scene = document.getElementById('a-frame-scene').getAttribute('src');
 			var scene = scene.substring(7,21);
-			interaction.push([scene, userId, time, "rotate", this.el.object3D.position.x, this.el.object3D.position.y, this.el.object3D.position.z, this.el.object3D.rotation.x, this.el.object3D.rotation.y, this.el.object3D.rotation.z]);
+			interaction.push([scene, userId, time, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
 			//getWorldPosition(position);
 			//getWorldQuaternion(...);
 		}
