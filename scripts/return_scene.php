@@ -19,35 +19,35 @@ $scenepath = "scenes/".$scene;
 
 //$scene = "04_L-EE1_R-EE1";
 
-$AOIleftposition = "-6 1 -11";
-$AOIrightposition = "6 1 -11";
-$AOIleftwidth = "12";
-$AOIrightwidth = "12";
-$AOIleftheight = "12";
-$AOIrightheight = "12";
+$AOIleftposition = "-16 1 -11";
+$AOIrightposition = "14 1 -11";
+$AOIleftwidth = "22";
+$AOIrightwidth = "22";
+$AOIleftheight = "40";
+$AOIrightheight = "40";
 $AOIopacity = "0.25";
 
 if (substr($scene,3,3) == "L-W") {
-    $AOIleftposition = "-4 0 -11";
-    $AOIrightposition = "8 0.5 -11";
-    $AOIleftwidth = "15";
-    $AOIrightwidth = "9";
-    $AOIleftheight = "14";
-    $AOIrightheight = "12";
+    $AOIleftposition = "-16 1 -11";
+    $AOIrightposition = "14 1 -11";
+    $AOIleftwidth = "44";
+    $AOIrightwidth = "22";
+    $AOIleftheight = "40";
+    $AOIrightheight = "40";
 } elseif (substr($scene,3,3) == "L-N") {
-    $AOIleftposition = "-8 0.5 -11";
-    $AOIrightposition = "4 0 -11";
-    $AOIleftwidth = "9";
-    $AOIrightwidth = "15";
-    $AOIleftheight = "12";
-    $AOIrightheight = "14";
+    $AOIleftposition = "-16 1 -11";
+    $AOIrightposition = "14 1 -11";
+    $AOIleftwidth = "22";
+    $AOIrightwidth = "44";
+    $AOIleftheight = "40";
+    $AOIrightheight = "40";
 } else {
-    $AOIleftposition = "-6 1 -11";
-    $AOIrightposition = "6 1 -11";
-    $AOIleftwidth = "12";
-    $AOIrightwidth = "12";
-    $AOIleftheight = "12";
-    $AOIrightheight = "12";
+    $AOIleftposition = "-16 1 -11";
+    $AOIrightposition = "14 1 -11";
+    $AOIleftwidth = "22";
+    $AOIrightwidth = "22";
+    $AOIleftheight = "40";
+    $AOIrightheight = "40";
 };
 
 echo json_encode(array($scene, $scenepath, $AOIleftposition, $AOIrightposition, $AOIleftwidth, 

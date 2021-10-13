@@ -1,0 +1,48 @@
+<html>
+ <head>
+        <title>A-Frame 360 Panorama</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="./scripts/aframe.min.js"></script>
+		<script src="./scripts/jquery-1.11.2.js"></script>
+		<script src="./scripts/common.js"></script>
+</head>
+<body oncontextmenu="return false;">
+    <script>
+        var taskOr = getParameterByName('taskOr');
+        var taskCount = getParameterByName('taskCount');
+        var userId = getParameterByName('userId');
+        //document.addEventListener("keydown", detectKey);
+        
+        AFRAME.registerComponent('clickhandler-nolog', {
+            schema: {
+              txt: {default:'default'}
+            },
+            init: function () {
+              var data = this.data;
+              var el = this.el;
+              el.addEventListener('click', function (evt) {
+                if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
+                    setTimeout(function() {
+                        window.open("003_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+                    }, 250);
+                };
+              });
+            }
+        });
+
+        </script> 
+<a-scene>
+    <a-sky clickhandler-nolog="txt:backgr;training" id="a-frame-scene" src="scenes/01_L-EE0_R-EE0.png" rotation="0 -90 0"></a-sky>
+    <a-plane clickhandler-nolog="txt:corridor_left" position="-16 1 -11" rotation="0 90 0" width="22" height="40" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
+    <a-plane clickhandler-nolog="txt:corridor_right" position="14 1 -11" rotation="0 -90 0" width="22" height="40" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
+    <a-entity cursor="rayOrigin:mouse"></a-entity>
+    <a-entity id="rig" position="0 0 0">
+        <a-camera id="camera" look-controls>	
+                <a-entity geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: No time limit;"></a-entity>
+                <a-entity geometry="primitive: plane; height: 0.08; width: 1" position="0 -0.79 -1" material="color: white; opacity: 0.5" text="width: 1; height: 1; align: center; color: red; value: (Select a corridor to move to the next scene);"></a-entity>
+        </a-camera>
+    </a-entity>
+</a-scene>
+</body>
+</html> 

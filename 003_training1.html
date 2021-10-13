@@ -1,0 +1,28 @@
+<html>
+ <head>
+        <title>A-Frame 360 Panorama</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="./scripts/aframe.min.js"></script>
+		<script src="./scripts/jquery-1.11.2.js"></script>
+		<script src="./scripts/common.js"></script>
+		<script src="./scripts/a-frame-components.js"></script>
+</head>
+<body oncontextmenu="return false;">
+    <script>
+        var nextPage = '004_training2.html';
+        var training = true;
+    </script> 
+<a-scene>
+    <a-sky clickhandler="txt:backgr" id="a-frame-scene" src="scenes/01_L-EE0_R-EE0.png" rotation="0 -90 0"></a-sky>
+    <a-plane clickhandler="txt:corridor_left" position="-16 1 -11" rotation="0 90 0" width="22" height="40" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
+    <a-plane clickhandler="txt:corridor_right" position="14 1 -11" rotation="0 -90 0" width="22" height="40" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
+    <a-entity cursor="rayOrigin:mouse"></a-entity>		  
+    <a-entity id="rig" position="0 0 0">
+        <a-camera id="camera" look-controls rotation-reader="training:true">	
+            <a-entity id="timer" timer geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: 5.00"></a-entity>
+        </a-camera>
+    </a-entity>
+</a-scene>
+</body>
+</html> 
