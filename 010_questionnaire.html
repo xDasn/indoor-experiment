@@ -17,7 +17,7 @@
 	var evalQuestionnaire = 'evaluation_questionnaire.csv';
 	
 	function testData (){
-		var intform1 = document.getElementsByName("stress");
+		var intform1 = document.getElementsByName("instructions");
 		var check1 = 0;
 		for(i=0;i<intform1.length;i++){
 			if(intform1[i].checked){
@@ -25,7 +25,7 @@
 				break;
 			}
 		}
-		var intform2 = document.getElementsByName("decision_width");
+		var intform2 = document.getElementsByName("interaction");
 		var check2 = 0;
 		for(i=0;i<intform2.length;i++){
 			if(intform2[i].checked){
@@ -33,8 +33,7 @@
 				break;
 			}
 		}
-		
-		var intform3 = document.getElementsByName("decision_length");
+		var intform3 = document.getElementsByName("stress");
 		var check3 = 0;
 		for(i=0;i<intform3.length;i++){
 			if(intform3[i].checked){
@@ -42,8 +41,7 @@
 				break;
 			}
 		}
-
-		var intform4 = document.getElementsByName("decision_stairs");
+		var intform4 = document.getElementsByName("decision_width");
 		var check4 = 0;
 		for(i=0;i<intform4.length;i++){
 			if(intform4[i].checked){
@@ -51,8 +49,8 @@
 				break;
 			}
 		}
-
-		var intform5 = document.getElementsByName("decision_random");
+		
+		var intform5 = document.getElementsByName("decision_length");
 		var check5 = 0;
 		for(i=0;i<intform5.length;i++){
 			if(intform5[i].checked){
@@ -61,7 +59,25 @@
 			}
 		}
 
-		if (check1 && check2 && check3 && check4 && check5) {
+		var intform6 = document.getElementsByName("decision_stairs");
+		var check6 = 0;
+		for(i=0;i<intform6.length;i++){
+			if(intform6[i].checked){
+				check6++;
+				break;
+			}
+		}
+
+		var intform7 = document.getElementsByName("decision_random");
+		var check7 = 0;
+		for(i=0;i<intform7.length;i++){
+			if(intform7[i].checked){
+				check7++;
+				break;
+			}
+		}
+
+		if (check1 && check2 && check3 && check4 && check5 && check6 && check7) {
 			document.getElementById("fillAll").innerHTML = " ";
 			readData();
 		}
@@ -88,6 +104,8 @@
 	form_data.push(taskOr);
 	form_data.push(history.length);
 
+	form_data.push($('input:radio[name=instructions]:checked').val());
+	form_data.push($('input:radio[name=interaction]:checked').val());
 	form_data.push($('input:radio[name=stress]:checked').val());
 	form_data.push($('input:radio[name=decision_width]:checked').val());
 	form_data.push($('input:radio[name=decision_length]:checked').val());
@@ -139,6 +157,52 @@
 	  <br>
 	  <h1>Please fill in the following questions regarding evaluation of conducted test</h1>
 	  <br>
+	  <fieldset class="form-group">
+		<legend class="col-form-label">I understood the given instructions well *</legend>
+		<div class="form-check form-check-inline">
+			<input type="radio" id="instructions1" name="instructions" class="form-check-input" value="1">
+			<label class="form-check-label" for="instructions1">strongly disagree</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input type="radio" id="instructions2" name="instructions" class="form-check-input"  value="2">
+			<label class="form-check-label" for="instructions2">disagree</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input type="radio" id="instructions3" name="instructions" class="form-check-input" value="3"> 
+			<label class="form-check-label" for="instructions3">neutral</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input type="radio" id="instructions4" name="instructions" class="form-check-input" value="4">
+			<label class="form-check-label" for="instructions4">agree</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input type="radio" id="instructions5" name="instructions" class="form-check-input" value="5">
+			<label class="form-check-label" for="instructions5">strongly agree</label>
+		</div>
+  	  </fieldset>
+		<fieldset class="form-group">
+			<legend class="col-form-label">The controlling of the scenes seemed easy and natural to me *</legend>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="interaction1" name="interaction" class="form-check-input" value="1">
+				<label class="form-check-label" for="interaction1">strongly disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="interaction2" name="interaction" class="form-check-input"  value="2">
+				<label class="form-check-label" for="interaction2">disagree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="interaction3" name="interaction" class="form-check-input" value="3"> 
+				<label class="form-check-label" for="interaction3">neutral</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="interaction4" name="interaction" class="form-check-input" value="4">
+				<label class="form-check-label" for="interaction4">agree</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input type="radio" id="interaction5" name="interaction" class="form-check-input" value="5">
+				<label class="form-check-label" for="interaction5">strongly agree</label>
+			</div>
+	  </fieldset>
 	  <fieldset class="form-group">
 			<legend class="col-form-label">When choosing the corridor, I felt under time pressure *</legend>
 			<div class="form-check form-check-inline">
@@ -265,6 +329,9 @@
 			<textarea class="form-control" id="comments_text" rows="4" placeholder="If you want to comment on the test in any way, please write your note here."></textarea>
 		</div>
 		<br>
+		<p>
+		<i>If to wish to receive informations about the results of the study, you can write an e-mail to: <b>snopkova.dajana@mail.muni.cz.</b></i>
+		</p>
 		<div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="storeData" onclick="testData();">Save and Continue</button><br><span style="color: red;" id="fillAll"></span></div>
 	</form>
 	<div class="col-md-1"></div>
