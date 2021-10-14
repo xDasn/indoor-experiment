@@ -41,7 +41,7 @@ $.ajax({
 		var AOIleftheight = output[6];
 		var AOIrightheight = output[7];
 		var AOIopacity = output[8];
-		$("#a-frame-scene").attr("src",scenepath);
+		$("#sky").attr("src",scenepath);
 		$("#corridor-left").attr("position",AOIleftposition);
 		$("#corridor-right").attr("position",AOIrightposition);
 		$("#corridor-left").attr("width",AOIleftwidth);
@@ -54,17 +54,20 @@ $.ajax({
 });
 
 </script>
-	<a-scene>
-		<a-sky clickhandler='txt:backgr' id="a-frame-scene" src="" rotation='0 -90 0'></a-sky>
-		<a-plane clickhandler='txt:corridor_left' id="corridor-left" position="" rotation='0 90 0' width="" height="" color='#0000ff' transparent='true' opacity=""></a-plane>
-		<a-plane clickhandler='txt:corridor_right' id="corridor-right" position="" rotation='0 -90 0' width="" height="" color='#ff0000' transparent='true' opacity=""></a-plane>
-		<a-entity cursor='rayOrigin:mouse'></a-entity>
-		<a-entity id='rig' position='0 0 0'>
-			<a-camera id='camera' look-controls rotation-reader>	
-			<a-entity id="timer" timer geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 5.00 s;'></a-entity>
-			</a-camera>
-		</a-entity>
-	</a-scene>
+<a-scene>
+	<a-assets>
+		<img id="sky" src="">
+	</a-assets>
+	<a-sky clickhandler='txt:backgr' id="a-frame-scene" src="#sky" rotation='0 -90 0'></a-sky>
+	<a-plane clickhandler='txt:corridor_left' id="corridor-left" position="" rotation='0 90 0' width="" height="" color='#0000ff' transparent='true' opacity=""></a-plane>
+	<a-plane clickhandler='txt:corridor_right' id="corridor-right" position="" rotation='0 -90 0' width="" height="" color='#ff0000' transparent='true' opacity=""></a-plane>
+	<a-entity cursor='rayOrigin:mouse'></a-entity>
+	<a-entity id='rig' position='0 0 0'>
+		<a-camera id='camera' look-controls rotation-reader>	
+		<a-entity id="timer" timer geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 5.00 s;'></a-entity>
+		</a-camera>
+	</a-entity>
+</a-scene>
  </body>
 </html>
 

@@ -1,3 +1,5 @@
+var timerValue = 5000;
+
 function saveDataToNewFile(filename, filedata){
     $.ajax({
         type: 'post',

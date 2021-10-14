@@ -33,7 +33,10 @@
 
         </script> 
 <a-scene>
-    <a-sky clickhandler-nolog="txt:backgr;training" id="a-frame-scene" src="scenes/01_L-EE0_R-EE0.png" rotation="0 -90 0"></a-sky>
+    <a-assets>
+        <img id="sky" src="scenes/01_L-EE0_R-EE0.png">
+    </a-assets>
+    <a-sky clickhandler-nolog="txt:backgr;training" id="a-frame-scene" src="#sky" rotation="0 -90 0"></a-sky>
     <a-plane clickhandler-nolog="txt:corridor_left" position="-16 1 -11" rotation="0 90 0" width="22" height="40" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
     <a-plane clickhandler-nolog="txt:corridor_right" position="14 1 -11" rotation="0 -90 0" width="22" height="40" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
     <a-entity cursor="rayOrigin:mouse"></a-entity>
