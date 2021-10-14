@@ -7,10 +7,16 @@ var interactionFile = userId + '_interaction.csv';
 
 var interaction = []; // virtual movement = rotation
 var responses = []; // click
+var scene = "";
 
 window.addEventListener("load", event => {
 var image = document.querySelector('img');
 if (image.complete && image.naturalHeight !== 0) {
+	scene = document.getElementById('sky').getAttribute('src');
+	scene = scene.substring(7,21);
+	if (training == true) {
+		scene = "tr_" + scene;
+	};
 }
 });
 
@@ -30,11 +36,6 @@ function counter (){
 	else  {
 		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s'}, true);
 		clearInterval(myVar);
-		var scene = document.getElementById('a-frame-scene').getAttribute('src');
-		var scene = scene.substring(7,21);
-		if (training == true) {
-			scene = "tr_" + scene;
-		};
 		responses.push([scene, userId, null, null, null, null, null]);
 		saveDataToExistingFile(responsesFile, arrayToCSV(responses));
 		saveDataToExistingFile(interactionFile, arrayToCSV(interaction));
@@ -84,11 +85,6 @@ function counter (){
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: msToTime(this.wholeTimeRemaining)}, true);
 		} else {
 			if (this.gotonext == true) {
-				var scene = document.getElementById('a-frame-scene').getAttribute('src');
-				var scene = scene.substring(7,21);
-				if (training == true) {
-					scene = "tr_" + scene;
-				};
 				responses.push([scene, userId, null, null, null, null, null]);
 				saveDataToExistingFile(responsesFile, arrayToCSV(responses));
 				saveDataToExistingFile(interactionFile, arrayToCSV(interaction));
@@ -110,23 +106,14 @@ function counter (){
 		}
   });*/
 
-  AFRAME.registerComponent('clickhandler', {
+AFRAME.registerComponent('clickhandler', {
 	schema: {
 	  txt: {default:'default'}
 	},
 	init: function () {
 	  var data = this.data;
 	  var el = this.el;
-	  var scene = document.getElementById('a-frame-scene').getAttribute('src');
-	  var scene = scene.substring(7,21);
-	  el.addEventListener('click', function (evt, scene) {
-		if (training == true) {
-			scene = "tr_" + scene;
-		};
-		var time = document.getElementById('timer').getAttribute('text');
-		var timeS = time["value"].substring(0,1);
-		var timeMs = time["value"].substring(2);
-		var time = parseInt(timeS)*1000 + parseInt(timeMs);
+	  el.addEventListener('click', function (evt) {
 		responses.push([scene, userId, time, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
 			saveDataToExistingFile(responsesFile, arrayToCSV(responses));
@@ -149,15 +136,6 @@ function counter (){
 
 AFRAME.registerComponent('rotation-reader', {
 	tick: function () {
-		var scene = document.getElementById('a-frame-scene').getAttribute('src');
-		var time = document.getElementById('timer').getAttribute('text');
-		var timeS = time["value"].substring(0,1);
-		var timeMs = time["value"].substring(2);
-		var time = parseInt(timeS)*1000 + parseInt(timeMs);
-		var scene = scene.substring(7,21);
-		if (training == true) {
-			scene = "tr_" + scene;
-		};
 		interaction.push([scene, userId, time, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
 	}
 });
