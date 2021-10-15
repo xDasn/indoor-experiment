@@ -55,7 +55,7 @@ $.ajax({
 });
 
 </script>
-<a-scene>
+<a-scene vr-mode-ui="enabled: false">
 	<a-assets>
 		<img id="sky" src="">
 	</a-assets>
