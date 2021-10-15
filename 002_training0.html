@@ -6,6 +6,7 @@
 		<script src="./scripts/aframe.min.js"></script>
 		<script src="./scripts/jquery-1.11.2.js"></script>
 		<script src="./scripts/common.js"></script>
+        <script src="./scripts/custom-look-controls.js"></script>
 </head>
 <body oncontextmenu="return false;">
     <script>
@@ -34,14 +35,15 @@
         </script> 
 <a-scene>
     <a-assets>
-        <img id="sky" src="scenes/01_L-EE0_R-EE0.png">
+        <img id="sky" src="scenes/test1.png">
     </a-assets>
     <a-sky clickhandler-nolog="txt:backgr;training" id="a-frame-scene" src="#sky" rotation="0 -90 0"></a-sky>
     <a-plane clickhandler-nolog="txt:corridor_left" position="-16 1 -11" rotation="0 90 0" width="22" height="40" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
     <a-plane clickhandler-nolog="txt:corridor_right" position="14 1 -11" rotation="0 -90 0" width="22" height="40" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
     <a-entity cursor="rayOrigin:mouse"></a-entity>
     <a-entity id="rig" position="0 0 0">
-        <a-camera id="camera" look-controls>	
+        <a-camera id="camera" look-controls>
+                <a-entity geometry="primitive: plane; height: 0.1; width: 1.5" position="0 0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: black; value: Pick a corridor that feels safer to evacuate by;"></a-entity>	
                 <a-entity geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: No time limit;"></a-entity>
                 <a-entity geometry="primitive: plane; height: 0.08; width: 1" position="0 -0.79 -1" material="color: white; opacity: 0.5" text="width: 1; height: 1; align: center; color: red; value: (Select a corridor to move to the next scene);"></a-entity>
         </a-camera>

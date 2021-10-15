@@ -31,10 +31,18 @@ function counter (){
 	timerValue = timerValue - 10;
 	var sceneEl = document.querySelector('a-scene');
 	if (timerValue > 0 ) {
-		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '' + (timerValue/1000).toFixed(2) + ' s'}, true);
+		if (training == true) {
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + 'Tr. task'}, true);
+		} else {
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + taskCount + '/36'}, true);
+		}
 	}
 	else  {
-		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s'}, true);
+		if (training == true) {
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + 'Tr. task'}, true);
+		} else {
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s     ' +  taskCount + '/36'}, true);
+		}
 		clearInterval(myVar);
 		responses.push([scene, userId, null, null, null, null, null]);
 		saveDataToExistingFile(responsesFile, arrayToCSV(responses));

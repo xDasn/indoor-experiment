@@ -7,6 +7,7 @@
 		<script src="./scripts/jquery-1.11.2.js"></script>
 		<script src="./scripts/common.js"></script>
 		<script src="./scripts/a-frame-components.js"></script>
+        <script src="./scripts/custom-look-controls.js"></script>
 </head>
 <body oncontextmenu="return false;"> 
 
