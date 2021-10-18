@@ -76,7 +76,7 @@
 		else {
 			document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with asterisk).";
 		}
-	}
+	};
 	
 	function readData() {
 	
@@ -128,14 +128,14 @@
 	
 	form_data = form_data.toString();
 	form_data = form_data.replace(/,/g, ';');
-
-	saveDataToExistingFile(personalCharFile, form_data);
-
-	setTimeout(function() {
-		window.open("001_instructions.html?taskOr=" + task_order + "&userId=" + random_code + "", "_self")
-	}, 750);
-	};
 	
+	$.when(
+		saveDataToExistingFile(personalCharFile, form_data)
+	).then(function() {
+		window.open("001_instructions.html?taskOr=" + task_order + "&userId=" + random_code + "", "_self")
+	});
+	};
+
 </script>
 <div clas="container">
 	<div class="row g-0" style="height: 100%;">

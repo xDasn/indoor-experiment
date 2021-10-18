@@ -142,12 +142,13 @@
 	form_data = form_data.toString();
 	form_data = form_data.replace(/,/g, ';');
 
-	saveDataToExistingFile(evalQuestionnaire, form_data);
-	
-	setTimeout(function() {
+	$.when(
+		saveDataToExistingFile(evalQuestionnaire, form_data)
+	).then(function() {
 		window.open("011_end.html", "_self");
-	}, 750);	
-	}
+	});
+	};
+
 </script>
 <div clas="container">
 	<div class="row g-0" style="height: 100%;">

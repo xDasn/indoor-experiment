@@ -11,6 +11,7 @@ var scene = "";
 
 window.addEventListener("load", event => {
 var image = document.querySelector('img');
+console.log('loaded');
 if (image.complete && image.naturalHeight !== 0) {
 	scene = document.getElementById('sky').getAttribute('src');
 	scene = scene.substring(7,21);
@@ -24,7 +25,8 @@ var time = 0;
 var myVar = setInterval(counter, 10);
 
 setInterval(function() {
-	time = time + 10;			
+	time = time + 10;
+	console.log(time);
 }, 10);
 
 function counter (){
@@ -45,9 +47,10 @@ function counter (){
 		}
 		clearInterval(myVar);
 		responses.push([scene, userId, null, null, null, null, null]);
-		saveDataToExistingFile(responsesFile, arrayToCSV(responses));
-		saveDataToExistingFile(interactionFile, arrayToCSV(interaction));
-		setTimeout(function() {
+		$.when(
+			saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
+			saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
+		).then(function() {
 			if (training == true) {
 				window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 			}
@@ -58,7 +61,7 @@ function counter (){
 			else {
 				window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 			}
-			}, 250);
+		});
 	}
 };
 
@@ -94,20 +97,21 @@ function counter (){
 		} else {
 			if (this.gotonext == true) {
 				responses.push([scene, userId, null, null, null, null, null]);
-				saveDataToExistingFile(responsesFile, arrayToCSV(responses));
-				saveDataToExistingFile(interactionFile, arrayToCSV(interaction));
-				setTimeout(function() {
-				if (training == true) {
-					window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-				}
-				else if (training == false && taskCount < 36) {
-					taskCount = Number(taskCount) + 1;
-					window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-				}
-				else {
-					window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-				}
-				}, 250);
+				$.when(
+					saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
+					saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
+				).then(function() {
+					if (training == true) {
+						window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+					}
+					else if (training == false && taskCount < 36) {
+						taskCount = Number(taskCount) + 1;
+						window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+					}
+					else {
+						window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+					}
+				});
 			}
 			this.gotonext = false; //prevent from loading nextPage each frame
 			}
@@ -124,9 +128,10 @@ AFRAME.registerComponent('clickhandler', {
 	  el.addEventListener('click', function (evt) {
 		responses.push([scene, userId, time, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
-			saveDataToExistingFile(responsesFile, arrayToCSV(responses));
-			saveDataToExistingFile(interactionFile, arrayToCSV(interaction));
-			setTimeout(function() {
+			$.when(
+				saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
+				saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
+			).then(function() {
 				if (training == true) {
 					window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				}
@@ -136,7 +141,7 @@ AFRAME.registerComponent('clickhandler', {
 				} else {
 					window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				}
-			}, 250);
+			});
 		}
 	  });
 	}
