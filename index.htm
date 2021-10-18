@@ -22,18 +22,30 @@
 				<br>
 				<h1>Welcome to our interactive indoor evacuation online test</h1>
 				<br>
-				<p>This test was developed in cooperation between the <b>Department of Geography at Brno Masaryk University</b> and the <b>Department of Geography
-					at Ghent University</b>.</p>
+				<h3>Introduction</h3>
+				<p>This test was developed in cooperation between two <b>Departments of Geography at Brno Masaryk University</b> and <b>Ghent University</b>.</p>
 				<p>The main goal of this test is to gain insight into human <b>decision-making</b> when choosing an evacuation route during <b>stress conditions</b>.
 					For this purpose the virtual tours will be used, which will display a <b>spheric picture</b> of a building model.
 					The test consists of questionnaire with your basic personal characteristics, training of interaction with the scenes, the experimental scenes and a follow-up questionnaire.
 					Whole test should not take longer than <b>10 minutes</b>. There are no risks in taking the test.
 				</p>
-				<p>This online test requires that your device supports <b>WebGL</b>. You can test it <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.</p>
-				<p>If possible, work in full screen mode. For example, use the <b>F11</b> key to turn it on.</p>
-				<p>Please be aware, that during the test, data on your <b>interaction</b> (mouse movement, keystrokes) will be collected. The data is collected <b>anonymously</b> and will only be used for the purpose of evaluating the experiment and subsequent publications.</p>
-				<p>By proceeding further to the test, you are consenting, that you are taking the test <b>voluntarily</b> and you are aware, that you can withdraw from the test anytime. If you want to participate, please use the button below to enter the test.</p>
-				<div style="margin-bottom: 15 px" class="text-center"><button type="button" class="btn btn-dark btn-lg btn-lg" onclick="openNextSlide();">Enter the test</button></div>
+				<h3>Requirements</h3>
+				<p>This online test requires that your device supports <b>WebGL</b>. You can test it <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.
+				If possible, work in <b>full screen</b> mode. For example, use the <b>F11</b> key to turn it on.</p>
+				<p>
+				<h3>Data collection</h3>
+				<p>
+					In this test we collect basic pesronal characteristics and subjective opinion on the conducted test. 
+					Please be also aware, that during the test, data on your <b>interaction</b> (mouse movement, keystrokes) will be collected. All data is collected <b>anonymously</b> and there are no attempts to store your IP address. 
+					Collected data will only be used for the purpose of evaluating the experiment and subsequent publications.
+				</p>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="consent" onchange="document.getElementById('nextSlide').disabled = !this.checked;">
+					<label class="form-check-label" for="consent">
+						<i>I confirm that I am taking the test voluntarily and I am aware, that I can withdraw from the test anytime.</i>
+					</label>
+				</div>
+				<div style="margin-bottom: 15 px" class="text-center"><button  id="nextSlide" type="button" class="btn btn-dark btn-lg btn-lg" disabled onclick="openNextSlide();">Enter the test</button></div>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-2" style="background-color: #1E64C8;"></div>
