@@ -18,8 +18,10 @@ if (image.complete && image.naturalHeight !== 0) {
 	if (training == true) {
 		scene = "tr_" + scene;
 	};
-	var clock=document.getElementById("timer").components.timer;
+	setTimeout(function(){
+		var clock=document.getElementById("timer").components.timer;
         clock.start();
+	}, 300);
 	}
 });
 
@@ -99,7 +101,7 @@ AFRAME.registerComponent('timer', {
 		if ((this.paused==false && this.wholeTimeRemaining > 0) || (this.paused==false && this.wholeTimeRemaining == undefined)) {
 		    this.TimeLeft();
 			var sceneEl = document.querySelector('a-scene');
-			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (this.wholeTimeRemaining/1000).toFixed(2)}, true);
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: Math.max((this.wholeTimeRemaining/1000),0).toFixed(2) + ' s     ' +  taskCount + '/36'}, true);
 		} else if (this.paused==false && this.gotonext == true) {
 				responses.push([scene, userId, null, null, null, null, null]);
 				$.when(
