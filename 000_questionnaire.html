@@ -11,6 +11,38 @@
 	<script>
 	var random_code, task_order;
 
+	function preloadImages(urls, allImagesLoadedCallback){
+		var loadedCounter = 0;
+		var toBeLoadedNumber = urls.length;
+		urls.forEach(function(url){
+			preloadImage(url, function(){
+				loadedCounter++;
+			if(loadedCounter == toBeLoadedNumber){
+				allImagesLoadedCallback();
+			}
+			});
+		});
+		function preloadImage(url, anImageLoadedCallback){
+			var img = new Image();
+			img.onload = anImageLoadedCallback;
+			img.src = url;
+		}
+		};
+
+		$.ajax({
+			type: 'get',
+			cache: false,
+			url: 'scripts/read_scenes.php', 
+			data: {directory: '../scenes'},
+			success: function(data) {
+				var scenesArray = (Object.values(JSON.parse(data)));
+				scenesArray = scenesArray.map(i => '/indoor-experiment/scenes/' + i);
+				preloadImages(scenesArray, function(){
+					console.log('All images were loaded to cache.');
+				});
+			}
+		});
+
 	function shuffle(array) {
 		array.sort(() => Math.random() - 0.5);
 	};
