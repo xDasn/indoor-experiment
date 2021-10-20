@@ -36,11 +36,11 @@
         </script> 
 <a-scene vr-mode-ui="enabled: false">
     <a-assets>
-        <img id="sky" src="scenes/test1.png">
+        <img id="sky" src="scenes/06_L-EM0_R-EM0.png">
     </a-assets>
     <a-sky clickhandler-nolog="txt:backgr;training" id="a-frame-scene" src="#sky" rotation="0 -90 0"></a-sky>
-    <a-plane clickhandler-nolog="txt:corridor_left" position="-16 1 -11" rotation="0 90 0" width="22" height="40" color="#0000ff" transparent="true" opacity="0.25"></a-plane>
-    <a-plane clickhandler-nolog="txt:corridor_right" position="14 1 -11" rotation="0 -90 0" width="22" height="40" color="#ff0000" transparent="true" opacity="0.25"></a-plane>
+    <a-plane clickhandler-nolog="txt:corridor_left" position="-150 -45 0" rotation="0 90 0" width="225" height="350" color="#0000ff" transparent="true" opacity="0"></a-plane>
+    <a-plane clickhandler-nolog="txt:corridor_right" position="150 -45 0" rotation="0 -90 0" width="225" height="350" color="#ff0000" transparent="true" opacity="0"></a-plane>
     <a-entity cursor="rayOrigin:mouse"></a-entity>
     <a-entity id="rig" position="0 0 0">
         <a-camera id="camera" look-controls viewable="maxyaw:40;maxpitch:120">
