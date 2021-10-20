@@ -9,21 +9,7 @@ var interaction = []; // virtual movement = rotation
 var responses = []; // click
 var scene = "";
 
-window.addEventListener("load", event => {
-var image = document.querySelector('img');
-console.log('loaded');
-if (image.complete && image.naturalHeight !== 0) {
-	scene = document.getElementById('sky').getAttribute('src');
-	scene = scene.substring(7,21);
-	if (training == true) {
-		scene = "tr_" + scene;
-	};
-	setTimeout(function(){
-		var clock=document.getElementById("timer").components.timer;
-        clock.start();
-	}, 300);
-	}
-});
+
 
 /*
 var time = 0;
@@ -83,6 +69,23 @@ AFRAME.registerComponent('timer', {
     	this.TargetTime = date.getTime() + this.TimeOutTime*1000;
 		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '5:00 s     ' +  taskCount + '/35'}, true);
 		this.paused= true;
+		console.log("timer registered");
+		window.addEventListener("load", event => {
+			var image = document.querySelector('img');
+			console.log('loaded');
+			if (image.complete && image.naturalHeight !== 0) {
+				scene = document.getElementById('sky').getAttribute('src');
+				scene = scene.substring(7,21);
+				if (training == true) {
+					scene = "tr_" + scene;
+				};
+				setTimeout(function(){
+					console.log("timer started");
+					var clock=document.getElementById("timer").components.timer;
+					clock.start();
+				}, 300);
+				}
+			});
 	},
 	TimeLeft:function(){
         let CurrentDate = new Date();
