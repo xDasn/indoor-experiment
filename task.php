@@ -57,7 +57,7 @@ $.ajax({
 
 </script>
 <a-scene vr-mode-ui="enabled: false">
-	<a-assets>
+	<a-assets timeout="5000">
 		<img id="sky" src="">
 	</a-assets>
 	<a-sky clickhandler='txt:backgr' id="a-frame-scene" src="#sky" rotation='0 -90 0'></a-sky>
