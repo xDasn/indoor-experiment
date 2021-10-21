@@ -61,7 +61,7 @@ function initTimer() {
 	scene = document.getElementById('sky').getAttribute('src');
 	scene = scene.substring(7,21);
 	if (training == true) {
-		scene = "tr_" + scene;
+		scene = scene + "_tr";
 	};
 	setTimeout(function(){
 		console.log("timer started");
@@ -148,11 +148,8 @@ AFRAME.registerComponent('clickhandler', {
 	  var data = this.data;
 	  var el = this.el;
 	  el.addEventListener('click', function (evt) {
-		var time = document.getElementById('timer').getAttribute('text');
-		var timeS = time["value"].substring(0,1);
-		var timeMs = time["value"].substring(2);
-		var time = parseInt(timeS)*1000 + parseInt(timeMs);
-		responses.push([taskCount, scene, userId, time, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
+		var timerComponent = document.querySelector('[timer]').components.timer;
+		responses.push([taskCount, scene, userId, timerComponent.wholeTimeRemaining, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
 			$.when(
 				saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
@@ -175,10 +172,7 @@ AFRAME.registerComponent('clickhandler', {
 
 AFRAME.registerComponent('rotation-reader', {
 	tick: function () {
-		var time = document.getElementById('timer').getAttribute('text');
-		var timeS = time["value"].substring(0,1);
-		var timeMs = time["value"].substring(2);
-		var time = parseInt(timeS)*1000 + parseInt(timeMs);
-		interaction.push([taskCount, scene, userId, time, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
+		var timerComponent = document.querySelector('[timer]').components.timer;
+		interaction.push([taskCount, scene, userId, timerComponent.wholeTimeRemaining, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
 	}
 });
