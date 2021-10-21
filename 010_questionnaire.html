@@ -131,7 +131,7 @@
 	form_data.push(screen.colorDepth);
 	
 	form_data.push(navigator.platform);
-	form_data.push(navigator.appCodeName+" "+navigator.appVersion);
+	//form_data.push(navigator.appCodeName+" "+navigator.appVersion);
 	form_data.push(navigator.language);
 	
 	var browserInfo = navigator.userAgent;
@@ -203,7 +203,7 @@
 			</div>
 	  </fieldset>
 	  <fieldset class="form-group">
-			<legend class="col-form-label">When choosing the corridor, I felt under time pressure *</legend>
+			<legend class="col-form-label">When choosing the corridor, I felt stressed (under pressure) *</legend>
 			<div class="form-check form-check-inline">
 				<input type="radio" id="stress1" name="stress" class="form-check-input" value="1">
 				<label class="form-check-label" for="stress1">strongly disagree</label>
@@ -326,7 +326,7 @@
 			<textarea class="form-control" id="comments_text" rows="4" placeholder="If you want to comment on the test in any way, please write your note here."></textarea>
 		</div>
 		<p>
-		<i>If to wish to receive informations about the results of the study, you can write an e-mail to: <b>snopkova.dajana@mail.muni.cz.</b></i>
+		<i>If you wish to receive informations about the results of the study, you can write an e-mail to: <b>snopkova.dajana@mail.muni.cz.</b></i>
 		</p>
 		<div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="storeData" onclick="testData();">Save and Continue</button><span style="color: red; margin-bottom: 15px" id="fillAll"></span></div>
 	</form>
