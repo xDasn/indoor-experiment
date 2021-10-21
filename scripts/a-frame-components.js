@@ -37,7 +37,7 @@ function counter (){
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s     ' +  taskCount + '/35'}, true);
 		}
 		clearInterval(myVar);
-		responses.push([scene, userId, null, null, null, null, null]);
+		responses.push([taskCount, scene, userId, null, null, null, null, null]);
 		$.when(
 			saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
 			saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
@@ -114,7 +114,7 @@ AFRAME.registerComponent('timer', {
 			var sceneEl = document.querySelector('a-scene');
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: Math.max((this.wholeTimeRemaining/1000),0).toFixed(2) + ' s     ' +  taskCount + '/35'}, true);
 		} else if (this.paused==false && this.gotonext == true) {
-				responses.push([scene, userId, null, null, null, null, null]);
+				responses.push([taskCount, scene, userId, null, null, null, null, null]);
 				$.when(
 					saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
 					saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
@@ -152,7 +152,7 @@ AFRAME.registerComponent('clickhandler', {
 		var timeS = time["value"].substring(0,1);
 		var timeMs = time["value"].substring(2);
 		var time = parseInt(timeS)*1000 + parseInt(timeMs);
-		responses.push([scene, userId, time, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
+		responses.push([taskCount, scene, userId, time, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
 			$.when(
 				saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
@@ -179,6 +179,6 @@ AFRAME.registerComponent('rotation-reader', {
 		var timeS = time["value"].substring(0,1);
 		var timeMs = time["value"].substring(2);
 		var time = parseInt(timeS)*1000 + parseInt(timeMs);
-		interaction.push([scene, userId, time, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
+		interaction.push([taskCount, scene, userId, time, "rotate", this.el.object3D.rotation.x, this.el.object3D.rotation.y]);
 	}
 });
