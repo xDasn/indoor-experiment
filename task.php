@@ -1,6 +1,6 @@
 <html>
  <head>
-        <title>A-Frame 360 Panorama</title>
+        <title>Please wait, scene is loading</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="./scripts/aframe.min.js"></script>
@@ -56,7 +56,7 @@ $.ajax({
 });
 
 </script>
-<a-scene vr-mode-ui="enabled: false">
+<a-scene vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: #1E64C8">
 	<a-assets timeout="5000">
 		<img id="sky" src="">
 	</a-assets>
