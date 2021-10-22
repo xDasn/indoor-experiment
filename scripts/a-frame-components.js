@@ -72,7 +72,7 @@ function initTimer() {
 
 AFRAME.registerComponent('timer', {
 	schema: {
-		TimeOutTime : {type:'int', default:5 }
+		TimeOutTime : {type:'int', default:10 }
 	},
 	init: function () {
 		this.gotonext = true;
