@@ -4,11 +4,12 @@ $taskOrder = $_POST['taskOr'];
 $currentTaskCount = $_POST['taskCount'];
 
 $sceneArray = explode("_", $taskOrder);
-$sceneId = $sceneArray[$currentTaskCount]; //25
+$sceneId = $sceneArray[$currentTaskCount-1];
     
 //get whole scene name based on id
 $d = dir('../scenes') or die($php_errormsg); 
-while (false !== ($f = $d->read())) { 
+
+while (false !== ($f = $d->read())) {
     if (preg_match('/^'.$sceneId.'.*$/',$f)) { 
         $scene = $f;
     } 
