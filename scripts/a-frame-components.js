@@ -80,7 +80,7 @@ AFRAME.registerComponent('timer', {
 		var date= new Date();
 		this.TimeOutTime = this.data.TimeOutTime;
     	this.TargetTime = date.getTime() + this.TimeOutTime*1000;
-		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '5:00 s     ' +  taskCount + '/35'}, true);
+		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '10:00 s     ' +  taskCount + '/35'}, true);
 		this.paused= true;
 		console.log("timer registered");
 		if (document.readyState === 'complete') {

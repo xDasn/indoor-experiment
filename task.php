@@ -66,7 +66,7 @@ $.ajax({
 	<a-entity cursor='rayOrigin:mouse'></a-entity>
 	<a-entity id='rig' position='0 0 0'>
 		<a-camera id="camera" look-controls viewable="maxyaw:40;maxpitch:120" rotation-reader>
-			<a-entity id="timer" timer geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 5.00 s;'></a-entity>
+			<a-entity id="timer" timer geometry='primitive: plane; height: 0.1; width: 0.5' position='0 -0.7 -1' material='color: white; opacity: 0.5' text='width: 1.5; height: 1.5; align: center; color: red; value: 10.00 s;'></a-entity>
 		</a-camera>
 	</a-entity>
 </a-scene>

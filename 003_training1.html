@@ -17,7 +17,7 @@
 </script>
 <a-scene vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: #1E64C8">
     <a-assets timeout="5000">
-        <img id="sky" src="scenes/07_L-EM0_R-ES0.png">
+        <img id="sky" src="scenes/06_L-EM0_R-EM0.png">
     </a-assets>
     <a-sky clickhandler="txt:backgr" id="a-frame-scene" src="#sky" rotation="0 -90 0"></a-sky>
     <a-plane clickhandler="txt:corridor_left" position="-150 -45 0" rotation="0 90 0" width="225" height="350" color="#0000ff" transparent="true" opacity="0"></a-plane>
@@ -26,7 +26,7 @@
     <a-entity id="rig" position="0 0 0">
         <a-camera id="camera" look-controls viewable="maxyaw:40;maxpitch:120" rotation-reader>
             <a-entity geometry="primitive: plane; height: 0.1; width: 1.5" position="0 0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: black; value: Pick a corridor that feels safer to evacuate by;"></a-entity>	
-            <a-entity id="timer" timer geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: 5.00"></a-entity>
+            <a-entity id="timer" timer geometry="primitive: plane; height: 0.1; width: 0.5" position="0 -0.7 -1" material="color: white; opacity: 0.5" text="width: 1.5; height: 1.5; align: center; color: red; value: 10.00 s"></a-entity>
         </a-camera>
     </a-entity>
 </a-scene>
