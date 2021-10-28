@@ -13,6 +13,11 @@
 	function openNextSlide () {
 		window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId + "", "_self")
 	}
+
+	function openTraining () {
+		var taskCount = 0;
+		window.open("002_training0.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId + "", "_self")
+	}
 	
 	</script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -24,13 +29,15 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-4 col-md-offset-4 main-text  justify-content-center d-flex flex-column">
 			<h1 style="margin-bottom: 35px; margin-top: 15px">End of training session</h1>
-			<p>This is the end of the training session. When you feel ready, you can proceed to the actual test. Your task remains the same, but the wording will no longer be displayed on the top of the scene.</p>
+			<p>This is the end of the training session. When you feel ready, you can proceed to the actual test. If you still don't feel confident with the controling of the scenes, you can repeat the training.
+				Your task remains the same, but the wording will no longer be displayed on the top of the scene.</p>
 			<div style="font-size: 1.1rem; border-width: 1px; border-style: solid; border-color: #666666; padding: 10px; margin-top: 10px; margin-bottom: 20px">
-				Imagine that there is a <b>fire</b> in a building. You just ran out of your office and you came to a crossroads.
+				Imagine that there is a <b>fire</b> in the building. You just ran out of your office and you came to a crossroads.
 				Your task is to look around you and <b>choose one of the corridors</b> that makes you feel more <b>safe</b> to leave the building. But be careful,
 				you only have <b>10 seconds</b> to make your decision.
 			</div>
-			<div class="text-center"><button type="button" class="btn btn-dark btn-lg" onclick="openNextSlide();">Continue</button></div>
+			<div class="text-center"><button type="button" class="btn btn-secondary btn-lg" onclick="openTraining();">Back to training</button>
+			<button type="button" class="btn btn-dark btn-lg" onclick="openNextSlide();">Continue</button></div>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3" style="background-color: #1E64C8;"></div>
