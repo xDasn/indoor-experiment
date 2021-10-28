@@ -77,7 +77,15 @@
 			}
 		}
 
-		if (check1 && check2 && check3 && check4 && check5 && check6 && check7) {
+		var check8;
+		if (document.getElementById("decision_text").value == "") {
+			check8 = 0;
+		}
+		else {
+			check8 = 1;
+		}
+
+		if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8) {
 			document.getElementById("fillAll").innerHTML = " ";
 			readData();
 		}
@@ -318,16 +326,18 @@
 			</div>
   		</fieldset>
 		<div class="form-group" style="margin-bottom: 15px">
-			<label class="col-form-label" for="decision_text">Decision comments</label>
-			<textarea class="form-control" id="decision_text" rows="4" placeholder="Please write anything that comes to your mind about how you decided when choosing the corridor."></textarea>
+			<label class="col-form-label" for="decision_text">Decision comments *</label>
+			<textarea class="form-control" id="decision_text" rows="4" placeholder="Please write anything that comes to your mind about how you decided when choosing the corridor, which factors do you consider most important and why."></textarea>
 		</div>
 		<div class="form-group" style="margin-bottom: 15px">
 			<label class="col-form-label" for="comments_text">Test comments</label>
 			<textarea class="form-control" id="comments_text" rows="4" placeholder="If you want to comment on the test in any way, report some problems or bugs, please write your note here."></textarea>
 		</div>
+		<div>
 		<p>
 		<i>If you wish to receive informations about the results of the study, you can write an e-mail to: <b>snopkova.dajana@mail.muni.cz.</b></i>
 		</p>
+		</div>
 		<div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="storeData" onclick="testData();">Save and Continue</button><span style="color: red; margin-bottom: 15px" id="fillAll"></span></div>
 	</form>
 	<div class="col-md-1"></div>
