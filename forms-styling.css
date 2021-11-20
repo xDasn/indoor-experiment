@@ -16,3 +16,24 @@ html, body {
     overflow-y: hidden;
 }
 
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    filter:alpha(opacity=70);
+    -moz-opacity:0.7;
+    -khtml-opacity: 0.7;
+    opacity: 1;
+    z-index: 100000;
+}
+
+#overlayTimeout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    filter:alpha(opacity=70);
+    -moz-opacity:0.7;
+    -khtml-opacity: 0.7;
+    opacity: 1;
+    z-index: 100000;
+}

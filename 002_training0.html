@@ -6,16 +6,59 @@
 		<script src="./scripts/aframe.min.js"></script>
 		<script src="./scripts/jquery-1.11.2.js"></script>
 		<script src="./scripts/common.js"></script>
-        <script src="./scripts/custom-look-controls.js"></script>
+        <!--script src="./scripts/custom-look-controls.js"></script-->
         <script src="./scripts/aframe-viewable-component.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="forms-styling.css">
 </head>
 <body oncontextmenu="return false;">
     <script>
+        var scene = '06_L-EM0_R-EM0';
         var taskOr = getParameterByName('taskOr');
         var taskCount = getParameterByName('taskCount');
         var userId = getParameterByName('userId');
         //document.addEventListener("keydown", detectKey);
         
+        var form_data  = [];
+	    var likertFile = userId + '_confidence.csv';;
+	
+        function testData (){
+            var intform1 = document.getElementsByName("confident");
+            var check1 = 0;
+            for(i=0;i<intform1.length;i++){
+                if(intform1[i].checked){
+                    check1++;
+                    break;
+                }
+            }
+
+            if (check1) {
+                document.getElementById("fillAll").innerHTML = " ";
+                readData();
+            }
+            else {
+                document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with asterisk).";
+            }
+        }
+        
+        function readData() {
+        
+        form_data.push(taskCount);
+        form_data.push(userId);
+        form_data.push('06_L-EM0_R-EM0_tr');
+
+        form_data.push($('input:radio[name=confident]:checked').val());
+
+        form_data = form_data.toString();
+        form_data = form_data.replace(/,/g, ';');
+
+        $.when(
+            saveDataToExistingFile(likertFile, form_data)
+        ).then(function() {
+            window.open("003_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+        });
+        };
+
         AFRAME.registerComponent('clickhandler-nolog', {
             schema: {
               txt: {default:'default'}
@@ -26,7 +69,8 @@
               el.addEventListener('click', function (evt) {
                 if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
                     setTimeout(function() {
-                        window.open("003_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+                        $("#overlay").css({ display: "block" });
+                       //window.open("002_likert.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
                     }, 250);
                 };
               });
@@ -50,5 +94,42 @@
         </a-camera>
     </a-entity>
 </a-scene>
+
+<div clas="container" id="overlay" style="display: none; width: 100%; height: 100%;">
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>
+    <div class="row g-0" style="height: 60%;">
+        <div class="col-md-3" style="background-color: #000000; opacity: 0.5;"></div>
+            <form class="text-center col-md-6 justify-content-center d-flex flex-column" style="background-color: #FFFF; margin-bottom: 0px">
+            <h2 style="margin-bottom: 35px; margin-top: 15px">How confident are you with your decision?</h2>
+            <fieldset class="form-group">
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident1" name="confident" class="form-check-input" value="1">
+                    <label class="form-check-label" for="confident1">very unsure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident2" name="confident" class="form-check-input"  value="2">
+                    <label class="form-check-label" for="confident2">unsure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident3" name="confident" class="form-check-input" value="3"> 
+                    <label class="form-check-label" for="confident3">neutral</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident4" name="confident" class="form-check-input" value="4">
+                    <label class="form-check-label" for="confident4">confident</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident5" name="confident" class="form-check-input" value="5">
+                    <label class="form-check-label" for="confident5">very confident</label>
+                </div>
+            </fieldset>
+            <br>
+                <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="testData();">Next Task</button><span style="color: red;" id="fillAll"></span></div>
+            </form>
+        <div class="col-md-3" style="background-color: #000000; opacity: 0.5;"></div>
+    </div>
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>    
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html> 

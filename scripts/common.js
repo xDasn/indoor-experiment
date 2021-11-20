@@ -111,4 +111,54 @@ function msToTime(s) {
 	s = (s - secs) / 60;
   
 	return pad(secs) + '.' + pad(ms, 2);
+};
+
+function testData (){
+	var intform1 = document.getElementsByName("confident");
+	var check1 = 0;
+	for(i=0;i<intform1.length;i++){
+		if(intform1[i].checked){
+			check1++;
+			break;
+		}
+	}
+
+	if (check1) {
+		document.getElementById("fillAll").innerHTML = " ";
+		readData();
+	}
+	else {
+		document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer, this question is mandatory.";
+	}
 }
+
+function readData() {
+
+confidences.push(taskCount);
+confidences.push(userId);
+confidences.push(scene);
+
+if ( $( "#confident1" ).length ) {
+    confidences.push($('input:radio[name=confident]:checked').val());
+} else {
+	confidences.push("timeout");
+}
+
+confidences = confidences.toString();
+confidences = confidences.replace(/,/g, ';');
+
+$.when(
+	saveDataToExistingFile(likertFile, confidences)
+).then(function() {
+	if (training == true) {
+		window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+	}
+	else if (training == false && taskCount < 35) {
+		taskCount = Number(taskCount) + 1;
+		window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+	}
+	else {
+		window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
+	}
+});
+};

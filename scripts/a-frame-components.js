@@ -4,11 +4,13 @@ var userId = getParameterByName('userId');
 
 var responsesFile = userId + '_responses.csv';
 var interactionFile = userId + '_interaction.csv';
+var likertFile = userId + '_confidence.csv';;
 
 var interaction = []; // virtual movement = rotation
 var responses = []; // click
-var scene = "";
+var confidences  = []; //confidence data
 
+var scene = "";
 
 
 /*
@@ -119,6 +121,8 @@ AFRAME.registerComponent('timer', {
 					saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
 					saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
 				).then(function() {
+					$("#overlayTimeout").css({ display: "block" });
+					/*
 					if (training == true) {
 						window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 					}
@@ -129,6 +133,7 @@ AFRAME.registerComponent('timer', {
 					else {
 						window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 					}
+					*/
 				});
 				this.gotonext = false; //prevent from loading nextPage each frame
 			}
@@ -149,12 +154,15 @@ AFRAME.registerComponent('clickhandler', {
 	  var el = this.el;
 	  el.addEventListener('click', function (evt) {
 		var timerComponent = document.querySelector('[timer]').components.timer;
+		timerComponent.paused = true;
 		responses.push([taskCount, scene, userId, timerComponent.wholeTimeRemaining, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
 			$.when(
 				saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
 				saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
 			).then(function() {
+				$("#overlay").css({ display: "block" });
+				/*
 				if (training == true) {
 					window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				}
@@ -164,6 +172,7 @@ AFRAME.registerComponent('clickhandler', {
 				} else {
 					window.open("010_questionnaire.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				}
+				*/
 			});
 		}
 	  });

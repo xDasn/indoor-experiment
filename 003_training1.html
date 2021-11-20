@@ -7,8 +7,10 @@
 		<script src="./scripts/jquery-1.11.2.js"></script>
 		<script src="./scripts/common.js"></script>
         <script src="./scripts/a-frame-components.js"></script>
-        <script src="./scripts/custom-look-controls.js"></script>
+        <!--script src="./scripts/custom-look-controls.js"></script-->
         <script src="./scripts/aframe-viewable-component.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="forms-styling.css">
 </head>
 <body oncontextmenu="return false;">
 <script>
@@ -30,5 +32,61 @@
         </a-camera>
     </a-entity>
 </a-scene>
+
+<div clas="container" id="overlay" style="display: none; width: 100%; height: 100%;">
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>
+    <div class="row g-0" style="height: 60%;">
+        <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
+        <div class="col-md-1" style="background-color: #FFFF; height: 100%"></div>
+        <form class="text-center col-md-6 justify-content-center d-flex flex-column" style="background-color: #FFFF; margin-bottom: 0px">
+            <h2 style="margin-bottom: 35px; margin-top: 15px">How confident are you with your decision?</h2>
+            <fieldset class="form-group">
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident1" name="confident" class="form-check-input" value="1">
+                    <label class="form-check-label" for="confident1">very unsure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident2" name="confident" class="form-check-input"  value="2">
+                    <label class="form-check-label" for="confident2">unsure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident3" name="confident" class="form-check-input" value="3"> 
+                    <label class="form-check-label" for="confident3">neutral</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident4" name="confident" class="form-check-input" value="4">
+                    <label class="form-check-label" for="confident4">confident</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="confident5" name="confident" class="form-check-input" value="5">
+                    <label class="form-check-label" for="confident5">very confident</label>
+                </div>
+            </fieldset>
+            <br>
+            <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="testData();">Next Task</button><span style="color: red;" id="fillAll"></span></div>
+        </form>
+        <div class="col-md-1" style="background-color: #FFFF;"></div>
+        <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
+    </div>
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>    
+</div>
+
+<div clas="container" id="overlayTimeout" style="display: none; width: 100%; height: 100%;">
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>
+    <div class="row g-0" style="height: 60%;">
+        <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
+        <div class="col-md-1" style="background-color: #FFFF; height: 100%"></div>
+            <div class="form-horizontal col-md-6 col-md-offset-3 justify-content-center d-flex flex-column" style="background-color: #FFFF;">
+            <h2 style="margin-bottom: 35px; margin-top: 15px">Oh no! The time run out.</h2>
+            <p>You must be quicker next time.</p>
+            <br>
+                <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="readData();">Next Task</button><span style="color: red;" id="fillAll"></span></div>
+            </div>
+        <div class="col-md-1" style="background-color: #FFFF;"></div>
+        <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
+    </div>
+    <div class="row g-0" style="height: 20%; background-color: #000000; opacity: 0.5;"></div>    
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html> 
