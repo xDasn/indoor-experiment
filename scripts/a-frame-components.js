@@ -116,6 +116,7 @@ AFRAME.registerComponent('timer', {
 			var sceneEl = document.querySelector('a-scene');
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: Math.max((this.wholeTimeRemaining/1000),0).toFixed(2) + ' s     ' +  taskCount + '/35'}, true);
 		} else if (this.paused==false && this.gotonext == true) {
+				camera.setAttribute('look-controls', 'enabled', false);
 				responses.push([taskCount, scene, userId, null, null, null, null, null]);
 				$.when(
 					saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
@@ -155,6 +156,7 @@ AFRAME.registerComponent('clickhandler', {
 	  el.addEventListener('click', function (evt) {
 		var timerComponent = document.querySelector('[timer]').components.timer;
 		timerComponent.paused = true;
+		camera.setAttribute('look-controls', 'enabled', false);
 		responses.push([taskCount, scene, userId, timerComponent.wholeTimeRemaining, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
 			$.when(
