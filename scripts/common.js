@@ -138,10 +138,10 @@ confidences.push(taskCount);
 confidences.push(userId);
 confidences.push(scene);
 
-if ( $( "#confident1" ).length ) {
-    confidences.push($('input:radio[name=confident]:checked').val());
-} else {
+if ($("#overlay").is(":hidden")) {
 	confidences.push("timeout");
+} else {
+	confidences.push($('input:radio[name=confident]:checked').val());
 }
 
 confidences = confidences.toString();
