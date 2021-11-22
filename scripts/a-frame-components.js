@@ -155,10 +155,10 @@ AFRAME.registerComponent('clickhandler', {
 	  var el = this.el;
 	  el.addEventListener('click', function (evt) {
 		var timerComponent = document.querySelector('[timer]').components.timer;
-		timerComponent.paused = true;
-		camera.setAttribute('look-controls', 'enabled', false);
 		responses.push([taskCount, scene, userId, timerComponent.wholeTimeRemaining, data.txt, evt.detail.intersection.point.x, evt.detail.intersection.point.y, evt.detail.intersection.point.z]);
 		if ((data.txt == "corridor_left") || (data.txt == "corridor_right")) {
+			timerComponent.paused = true;
+			camera.setAttribute('look-controls', 'enabled', false);
 			$.when(
 				saveDataToExistingFile(responsesFile, arrayToCSV(responses)),
 				saveDataToExistingFile(interactionFile, arrayToCSV(interaction))
