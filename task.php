@@ -79,7 +79,7 @@ $.ajax({
         <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
         <div class="col-md-1" style="background-color: #FFFF; height: 100%"></div>
 		<form class="text-center col-md-6 justify-content-center d-flex flex-column" style="background-color: #FFFF; margin-bottom: 0px">
-            <h2 style="margin-bottom: 35px; margin-top: 15px">How confident are you with your decision?</h2>
+            <h2 style="margin-bottom: 35px; margin-top: 15px">How confident you are that the path you have chosen leads to the exit?</h2>
             <fieldset class="form-group">
                 <div class="form-check form-check-inline">
                     <input type="radio" id="confident1" name="confident" class="form-check-input" value="1">
@@ -120,7 +120,8 @@ $.ajax({
             <h2 style="margin-bottom: 35px; margin-top: 15px">Oh no! The time run out.</h2>
             <p>You must be quicker next time.</p>
             <br>
-                <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="readData();">Next Task</button><span style="color: red;" id="fillAll"></span></div>
+                <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="readData();">Next Task</button>
+                </br><span style="color: red;" id="fillAll"></span></div>
             </div>
         <div class="col-md-1" style="background-color: #FFFF;"></div>
         <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
