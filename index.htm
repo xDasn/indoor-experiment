@@ -21,27 +21,33 @@
 			<div class="col-md-6 col-md-offset-3 main-text justify-content-center d-flex flex-column">
 				<h1 style="margin-bottom: 35px; margin-top: 15px">Welcome to our interactive indoor evacuation online test</h1>
 				<h3>Introduction</h3>
-				<p>This test was developed in cooperation between two <b>Departments of Geography at Brno Masaryk University</b> and <b>Ghent University</b>.</p>
-				<p>The main goal of this test is to gain insight into human <b>decision making</b> when choosing an evacuation route during <b>stress conditions</b>.
-					For this purpose virtual tours will be used, which will display a <b>spheric picture</b> of a building model.
-					The test consists of a questionnaire with your basic personal characteristics, a training of interaction with the scenes, the experimental scenes and a follow-up questionnaire.
-					The whole test should not take longer than <b>10 minutes</b>. There are no risks in taking the test.
+				<p>The main goal of this test is to gain insight into human <b>decision-making</b> when choosing an evacuation route during <b>stress conditions</b>.
+					For this purpose, virtual tours will be used to display a <b>spheric picture</b> of a building model.
+					The test consists of a questionnaire with your basic personal characteristics, a training of interaction with the scenes, the experimental scenes, and a follow-up questionnaire.
+					The whole test should not take longer than <b>15 minutes</b>. There are no risks in taking the test.
 				</p>
+				<p>This test was developed in cooperation between two <b>Departments of Geography at Brno Masaryk University</b> and <b>Ghent University</b>.</p>
 				<h3>Requirements</h3>
 				<p>This online test should be conducted on desktop devices (PC, laptop). It also requires that your device supports <b>WebGL</b>, which is mostly the case if you use a newer version of your internet browser. 
 					You can test it <a href="https://get.webgl.org/" target="_blank">here</a> or <a href="http://webglreport.com/" target="_blank"> here</a>.
-				If possible, work in <b>full screen</b> mode (simply use the <b>F11</b> key to turn it on). Please use mouse (not touchpad) for interaction with the scenes.</p>
+				If possible, work in <b>full-screen</b> mode (simply use the <b>F11</b> key to turn it on). Please use a mouse (not a touchpad) for interaction with the scenes.</p>
 				<p>
 				<h3>Data collection</h3>
 				<p>
-					In this test we collect basic personal characteristics and subjective opinions on the displayed scenes. 
-					Please be also aware, that during the test, data on your <b>interaction</b> (mouse movement, keystrokes) will be collected. All data is collected <b>anonymously</b> and there are no attempts to store your IP address. 
-					Collected data will only be used for the purpose of evaluating the experiment and subsequent publications.
+					In this test, we collect basic personal characteristics and subjective opinions on the displayed scenes and your way-finding decisions. 
+					Please be also aware that data on your <b>interaction</b> (mouse movement, keystrokes) will be collected during the test. All data is collected <b>anonymously</b>, and there are no attempts to store your IP address. 
+					Collected data will only be used to evaluate the experiment and subsequent publications.
 				</p>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="consent" onchange="document.getElementById('nextSlide').disabled = !this.checked;">
+					<input class="form-check-input" type="checkbox" id="consent" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consentForm').checked);">
 					<label class="form-check-label" for="consent">
-						<i>I confirm that I am taking the test voluntarily and I am aware that I can withdraw from the test anytime.</i>
+						<i>I confirm that I am taking the test voluntarily, and I am aware that I can withdraw from the test anytime.</i>
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="consentForm" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consent').checked);">
+					<label class="form-check-label" for="consentForm">
+						<i>I confirm that I have read the <a href="img/informedConsent_en.pdf" target="_blank">full informed consent</a> (previous paragraphs contain its summary).</i>
 					</label>
 				</div>
 				<div style="margin-bottom: 15 px" class="text-center"><button  id="nextSlide" type="button" class="btn btn-dark btn-lg btn-lg" disabled onclick="openNextSlide();">Enter the test</button></div>
