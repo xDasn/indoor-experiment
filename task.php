@@ -103,7 +103,8 @@ $.ajax({
                 </div>
             </fieldset>
             <br>
-            <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="testData();">Next Task</button><span style="color: red;" id="fillAll"></span></div>
+            <div class="text-center"><button type="button" class="btn btn-dark btn-lg" id="nextTask" onclick="testData();">Next Task</button>
+            </br><span style="color: red;" id="fillAll"></span></div>
         </form>
         <div class="col-md-1" style="background-color: #FFFF;"></div>
         <div class="col-md-2" style="background-color: #000000; opacity: 0.5;"></div>
