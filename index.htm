@@ -39,13 +39,19 @@
 					Collected data will only be used to evaluate the experiment and for subsequent publications.
 				</p>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="consent" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consentForm').checked);">
+					<input class="form-check-input" type="checkbox" id="consent1" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consentForm').checked && document.getElementById('consent'));">
+					<label class="form-check-label" for="consent">
+						<i>I confirm that I haven't previously participated in this experiment.</i>
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="consent" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consentForm').checked && document.getElementById('consent1'));">
 					<label class="form-check-label" for="consent">
 						<i>I confirm that I am taking the test voluntarily, and I am aware that I can withdraw from the test anytime.</i>
 					</label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="consentForm" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consent').checked);">
+					<input class="form-check-input" type="checkbox" id="consentForm" onchange="document.getElementById('nextSlide').disabled = !(this.checked && document.getElementById('consent').checked && document.getElementById('consent1'));">
 					<label class="form-check-label" for="consentForm">
 						<i>I confirm that I have read the <a href="img/informedConsent_en.pdf" target="_blank">full informed consent</a> (previous paragraphs contain its summary).</i>
 					</label>
