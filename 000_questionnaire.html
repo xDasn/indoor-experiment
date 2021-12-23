@@ -11,15 +11,29 @@
 	<script>
 	var random_code, task_order;
 
-	function shuffle(array) {
-		array.sort(() => Math.random() - 0.5);
+	function getRandomSubarray(arr, size) {
+		var shuffled = arr.slice(0), i = arr.length, temp, index;
+		while (i--) {
+			index = Math.floor((i + 1) * Math.random());
+			temp = shuffled[index];
+			shuffled[index] = shuffled[i];
+			shuffled[i] = temp;
+		}
+		return shuffled.slice(0, size);
 	};
 
 	function generateId() {
-		var tasks = ["01_","02_","03_","04_","05_","06_","07_","08_","09_","10_","11_","12_","13_","14_","15_","16_","17_","18_","19_","20_","21_","22_","23_","24_","25_","26_","27_","28_","29_","30_","31_","32_","33_","34_","35_"];
-		shuffle(tasks);
+		var tasks = [];
+		for (var i = 1; i <= 63; i++) {
+			if (i < 10) {
+				tasks.push('0'+i+'_')
+			} else {
+			tasks.push(i+'_');
+			}
+		};
+		var tasks_subset = getRandomSubarray(tasks, 25);
 		random_code = (Math.round(Math.random()*100000000));
-		task_order = tasks.toString().replaceAll(",", "");
+		task_order = tasks_subset.toString().replaceAll(",", "");
 	};
 
 	var form_data  = [];

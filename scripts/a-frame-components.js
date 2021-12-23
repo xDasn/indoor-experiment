@@ -29,14 +29,14 @@ function counter (){
 		if (training == true) {
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + 'Tr. task'}, true);
 		} else {
-			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + taskCount + '/35'}, true);
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + taskCount + '/25'}, true);
 		}
 	}
 	else  {
 		if (training == true) {
 			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: (timerValue/1000).toFixed(2) + ' s     ' + 'Tr. task'}, true);
 		} else {
-			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s     ' +  taskCount + '/35'}, true);
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '0.00 s     ' +  taskCount + '/25'}, true);
 		}
 		clearInterval(myVar);
 		responses.push([taskCount, scene, userId, null, null, null, null, null]);
@@ -47,7 +47,7 @@ function counter (){
 			if (training == true) {
 				window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 			}
-			else if (training == false && taskCount < 35) {
+			else if (training == false && taskCount < 25) {
 				taskCount = Number(taskCount) + 1;
 				window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 			}
@@ -82,7 +82,7 @@ AFRAME.registerComponent('timer', {
 		var date= new Date();
 		this.TimeOutTime = this.data.TimeOutTime;
     	this.TargetTime = date.getTime() + this.TimeOutTime*1000;
-		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '10:00 s     ' +  taskCount + '/35'}, true);
+		sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: '10:00 s     ' +  taskCount + '/25'}, true);
 		this.paused= true;
 		console.log("timer registered");
 		if (document.readyState === 'complete') {
@@ -114,7 +114,7 @@ AFRAME.registerComponent('timer', {
 		if ((this.paused==false && this.wholeTimeRemaining > 0) || (this.paused==false && this.wholeTimeRemaining == undefined)) {
 		    this.TimeLeft();
 			var sceneEl = document.querySelector('a-scene');
-			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: Math.max((this.wholeTimeRemaining/1000),0).toFixed(2) + ' s     ' +  taskCount + '/35'}, true);
+			sceneEl.querySelector("#timer").setAttribute('text', {width: 1.5, height: 1.5, align: 'center', color: 'red', value: Math.max((this.wholeTimeRemaining/1000),0).toFixed(2) + ' s     ' +  taskCount + '/25'}, true);
 		} else if (this.paused==false && this.gotonext == true) {
 				camera.setAttribute('look-controls', 'enabled', false);
 				responses.push([taskCount, scene, userId, null, null, null, null, null]);
@@ -127,7 +127,7 @@ AFRAME.registerComponent('timer', {
 					if (training == true) {
 						window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 					}
-					else if (training == false && taskCount < 35) {
+					else if (training == false && taskCount < 25) {
 						taskCount = Number(taskCount) + 1;
 						window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 					}
@@ -168,7 +168,7 @@ AFRAME.registerComponent('clickhandler', {
 				if (training == true) {
 					window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				}
-				else if (taskCount < 35) {
+				else if (taskCount < 25) {
 					taskCount = Number(taskCount) + 1;
 					window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 				} else {

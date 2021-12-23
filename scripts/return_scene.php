@@ -26,7 +26,7 @@ $AOIleftwidth = "225";
 $AOIrightwidth = "225";
 $AOIleftheight = "350";
 $AOIrightheight = "350";
-$AOIopacity = "0";
+$AOIopacity = "0.7";
 
 if (substr($scene,3,3) == "L-W") {
     $AOIleftposition = "-150 -45 110";
