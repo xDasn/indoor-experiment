@@ -96,15 +96,8 @@
 	
 	function readData() {
 	
-	var datum = new Date();
-	var y = datum.getFullYear();
-	var o = datum.getMonth();
-	var d = datum.getDay();
-	var h = datum.getHours(); 
-	var m = datum.getMinutes();
-	var s = datum.getSeconds();
-	
-	form_data.push(y+"-"+o+"-"+d+"-"+h+":"+m+":"+s);
+	var datum = new Date().toLocaleString('en-GB');
+	form_data.push(datum.toString().replace(", ", "/"));  
 	
 	form_data.push(userId);
 	form_data.push(taskCount);
