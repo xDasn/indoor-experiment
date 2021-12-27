@@ -153,7 +153,7 @@ $.when(
 	if (training == true) {
 		window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 	}
-	else if (training == false && taskCount < 25) {
+	else if (training == false && taskCount < 20) {
 		taskCount = Number(taskCount) + 1;
 		window.open("task.php?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
 	}
