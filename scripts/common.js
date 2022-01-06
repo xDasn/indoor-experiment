@@ -1,14 +1,5 @@
 var timerValue = 5000;
 
-function saveDataToNewFile(filename, filedata){
-    $.ajax({
-        type: 'post',
-        cache: false,
-        url: 'scripts/create_new_file.php', 
-        data: {filename: filename, filedata: filedata}
-    });
-};
-
 function saveDataToExistingFile(filename, filedata){
     $.ajax({
         type: 'post',
@@ -148,7 +139,12 @@ confidences = confidences.toString();
 confidences = confidences.replace(/,/g, ';');
 
 $.when(
-	saveDataToExistingFile(likertFile, confidences)
+	$.ajax({
+        type: 'post',
+        cache: false,
+        url: 'scripts/write_to_file.php', 
+        data: {filename: likertFile, filedata: confidences}
+    }),
 ).then(function() {
 	if (training == true) {
 		window.open(nextPage + "?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");

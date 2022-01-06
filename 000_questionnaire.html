@@ -141,7 +141,12 @@
 	form_data = form_data.replace(/,/g, ';');
 	
 	$.when(
-		saveDataToExistingFile(personalCharFile, form_data)
+		$.ajax({
+			type: 'post',
+			cache: false,
+			url: 'scripts/write_to_file.php', 
+			data: {filename: personalCharFile, filedata: form_data}
+		})
 	).then(function() {
 		window.open("001_instructions.html?taskOr=" + task_order + "&userId=" + random_code + "", "_self")
 	});

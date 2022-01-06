@@ -151,7 +151,12 @@
 	form_data = form_data.replace(/,/g, ';');
 
 	$.when(
-		saveDataToExistingFile(evalQuestionnaire, form_data)
+		$.ajax({
+        type: 'post',
+        cache: false,
+        url: 'scripts/write_to_file.php', 
+        data: {filename: evalQuestionnaire, filedata: form_data}
+    	})
 	).then(function() {
 		window.open("011_end.html", "_self");
 	});
