@@ -112,9 +112,16 @@
 	form_data.push($('input:radio[name=decision_length]:checked').val());
 	form_data.push($('input:radio[name=decision_stairs]:checked').val());
 	form_data.push($('input:radio[name=decision_random]:checked').val());
-
-	form_data.push(document.getElementById("decision_text").value);
-	form_data.push(document.getElementById("comments_text").value);
+	var decision_text = document.getElementById("decision_text").value;
+	var comments_text = document.getElementById("comments_text").value;
+	decision_text = decision_text.replace(/,/g, '.');
+	decision_text = decision_text.replace(/;/g, '.');
+	decision_text = decision_text.replace(/\n/g, '. ');
+	comments_text = comments_text.replace(/,/g, '.');
+	comments_text = comments_text.replace(/;/g, '.');
+	comments_text = comments_text.replace(/\n/g, '. ');
+	form_data.push(decision_text);
+	form_data.push(comments_text);
 	
 	var w = window.innerWidth
 	|| document.documentElement.clientWidth

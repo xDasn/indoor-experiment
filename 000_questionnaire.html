@@ -107,7 +107,11 @@
 	form_data.push($('input:radio[name=education]:checked').val());
 	form_data.push($('input:radio[name=handedness]:checked').val());
 	form_data.push($('input:radio[name=driving]:checked').val());
-	form_data.push(document.getElementById("eye_defect").value);
+	eye_defect = document.getElementById("eye_defect").value;
+	eye_defect = eye_defect.replace(/,/g, '.');
+	eye_defect = eye_defect.replace(/;/g, '.');
+	eye_defect = eye_defect.replace(/\n/g, '. ');
+	form_data.push(eye_defect);
 
 	var w = window.innerWidth
 	|| document.documentElement.clientWidth
