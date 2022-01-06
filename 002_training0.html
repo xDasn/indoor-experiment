@@ -19,8 +19,6 @@
         var userId = getParameterByName('userId');
         //document.addEventListener("keydown", detectKey);
         
-        var form_data  = [];
-	    var likertFile = userId + '_confidence.csv';;
 	
         function testData (){
             var intform1 = document.getElementsByName("confident");
@@ -34,30 +32,12 @@
 
             if (check1) {
                 document.getElementById("fillAll").innerHTML = " ";
-                readData();
+                window.open("003_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
             }
             else {
                 document.getElementById("fillAll").innerHTML = "&nbsp; &nbsp; Please answer all mandatory questions (marked with asterisk).";
             }
         }
-        
-        function readData() {
-        
-        form_data.push(taskCount);
-        form_data.push(userId);
-        form_data.push('06_L-EM0_R-EM0_tr');
-
-        form_data.push($('input:radio[name=confident]:checked').val());
-
-        form_data = form_data.toString();
-        form_data = form_data.replace(/,/g, ';');
-
-        $.when(
-            saveDataToExistingFile(likertFile, form_data)
-        ).then(function() {
-            window.open("003_training1.html?taskOr=" + taskOr + "&taskCount=" + taskCount + "&userId=" + userId, "_self");
-        });
-        };
 
         AFRAME.registerComponent('clickhandler-nolog', {
             schema: {
