@@ -58,7 +58,7 @@ $.ajax({
 });
 
 </script>
-<a-scene vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: #1E64C8">
+<a-scene vr-mode-ui="enabled: true" loading-screen="dotsColor: white; backgroundColor: #1E64C8">
 	<a-assets timeout="5000">
 		<img id="sky" src="">
 	</a-assets>
